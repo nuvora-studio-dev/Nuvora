@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
+import { withBasePath } from "@/lib/base-path";
 
 export const metadata: Metadata = { title: "Trabajo", description: "Archivo de proyectos de Nuvora." };
 
@@ -18,7 +19,7 @@ export default function WorkPage() {
               <p>Cada caso mostrará contexto, decisiones y resultados verificables.</p>
             </div>
             <figure className="empty-projects-art">
-              <Image src="/brand/nuvora-detail-art.png" alt="Estudio abstracto de una cinta azul de Nuvora" fill sizes="(max-width: 767px) 100vw, 42vw" />
+              <Image src={withBasePath("/brand/nuvora-detail-art.png")} alt="Estudio abstracto de una cinta azul de Nuvora" fill sizes="(max-width: 767px) 100vw, 42vw" />
             </figure>
           </div>
         </Container>
