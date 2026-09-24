@@ -1,28 +1,11 @@
 export const siteConfig = {
   name: "Nuvora",
-  description:
-    "Estudio digital que combina desarrollo, diseño y tecnología para crear experiencias y productos digitales.",
+  description: "Diseñamos y desarrollamos páginas web rápidas, modernas y a medida para negocios, profesionales y marcas.",
   nav: [
-    { href: "/work", label: "Trabajo" },
+    { href: "/work", label: "Proyectos" },
     { href: "/services", label: "Servicios" },
-    { href: "/about", label: "Nuvora" },
-  ],
-  services: [
-    {
-      title: "Dirección digital",
-      body: "Estrategia, arquitectura y decisiones de producto para construir con intención.",
-      status: "Ámbito por confirmar",
-    },
-    {
-      title: "Diseño de producto",
-      body: "Sistemas visuales e interfaces claras, coherentes y preparadas para evolucionar.",
-      status: "Ámbito por confirmar",
-    },
-    {
-      title: "Desarrollo web",
-      body: "Implementaciones rápidas, accesibles y mantenibles con una base técnica sólida.",
-      status: "Ámbito por confirmar",
-    },
+    { href: "/about", label: "Nosotros" },
+    { href: "/contact", label: "Contacto" },
   ],
   principles: [
     "Claridad antes que decoración",

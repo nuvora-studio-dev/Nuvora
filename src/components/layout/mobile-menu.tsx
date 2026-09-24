@@ -44,7 +44,7 @@ export function MobileMenu() {
               </Link>
             );
           })}
-          <Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined} onClick={() => setOpen(false)}>Iniciar un proyecto</Link>
+          <Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined} onClick={() => setOpen(false)}>Cuéntanos tu proyecto</Link>
         </nav>
       )}
     </div>

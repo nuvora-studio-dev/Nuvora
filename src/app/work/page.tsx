@@ -4,12 +4,12 @@ import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
 import { withBasePath } from "@/lib/base-path";
 
-export const metadata: Metadata = { title: "Trabajo", description: "Archivo de proyectos de Nuvora." };
+export const metadata: Metadata = { title: "Proyectos", description: "Descubre proyectos de diseño y desarrollo web creados por Nuvora." };
 
 export default function WorkPage() {
   return (
     <>
-      <PageIntro eyebrow="Trabajo" title="El resultado habla antes que nosotros." description="Este archivo recibirá únicamente proyectos reales con contexto, proceso y resultados verificables." />
+      <PageIntro eyebrow="Proyectos" title="El resultado habla antes que nosotros." description="Este archivo recibirá únicamente proyectos reales con contexto, proceso y resultados verificables." />
       <section className="section-space compact-top">
         <Container>
           <div className="work-empty-grid">

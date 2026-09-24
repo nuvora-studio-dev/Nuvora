@@ -24,39 +24,78 @@ export function ContactForm() {
     if (data.get("privacy") !== "on") nextErrors.privacy = "Necesitamos tu consentimiento para continuar.";
 
     setErrors(nextErrors);
-    setNotice(Object.keys(nextErrors).length === 0
-      ? "El formulario está validado. Falta configurar el destinatario antes de activar el envío."
-      : "Revisa los campos indicados.");
+    if (Object.keys(nextErrors).length > 0) {
+      setNotice("Revisa los campos indicados.");
+      return;
+    }
+
+    const body = [
+      `Nombre: ${name}`,
+      `Email: ${email}`,
+      `Empresa o proyecto: ${String(data.get("company") ?? "").trim()}`,
+      `Qué necesitas: ${project}`,
+      `Presupuesto aproximado: ${String(data.get("budget") ?? "")}`,
+      `Cuándo te gustaría tenerlo: ${String(data.get("timeline") ?? "")}`,
+      "",
+      message,
+    ].join("\n");
+    window.location.href = `mailto:nuvora.studio@outlook.com?subject=${encodeURIComponent(`Nuevo proyecto: ${project}`)}&body=${encodeURIComponent(body)}`;
+    setNotice("Se abrirá tu aplicación de correo. Revisa y envía el mensaje desde allí.");
   }
 
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate>
       <div className="field-grid">
         <FormField id="name" label="Nombre" error={errors.name}>
-          <input id="name" name="name" autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} />
+          <input id="name" name="name" placeholder="Tu nombre" autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} />
         </FormField>
         <FormField id="email" label="Email" error={errors.email}>
-          <input id="email" name="email" type="email" autoComplete="email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} />
+          <input id="email" name="email" type="email" placeholder="tu@email.com" autoComplete="email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} />
         </FormField>
       </div>
-      <FormField id="project" label="Tipo de proyecto" error={errors.project}>
+      <FormField id="company" label="Empresa o proyecto">
+        <input id="company" name="company" placeholder="Nombre de tu empresa" autoComplete="organization" />
+      </FormField>
+      <FormField id="project" label="¿Qué necesitas?" error={errors.project}>
         <select id="project" name="project" defaultValue="" aria-invalid={Boolean(errors.project)} aria-describedby={errors.project ? "project-error" : undefined}>
           <option value="" disabled>Selecciona una opción</option>
-          <option value="web">Web o experiencia digital</option>
-          <option value="product">Producto digital</option>
-          <option value="other">Otro ámbito</option>
+          <option>Nueva página web</option>
+          <option>Rediseñar mi web</option>
+          <option>Landing page</option>
+          <option>Mantenimiento / mejoras</option>
+          <option>Otro</option>
         </select>
       </FormField>
-      <FormField id="message" label="Cuéntanos qué necesitas" error={errors.message}>
-        <textarea id="message" name="message" rows={6} aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} />
+      <FormField id="message" label="Cuéntanos sobre el proyecto" error={errors.message}>
+        <textarea id="message" name="message" rows={6} placeholder="Qué haces, qué necesitas, qué quieres mejorar y cualquier información que consideres importante." aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} />
       </FormField>
+      <div className="field-grid">
+        <FormField id="budget" label="Presupuesto aproximado">
+          <select id="budget" name="budget" defaultValue="Todavía no lo sé">
+            <option>Todavía no lo sé</option>
+            <option>Menos de 500 €</option>
+            <option>500–1.000 €</option>
+            <option>1.000–2.500 €</option>
+            <option>Más de 2.500 €</option>
+          </select>
+        </FormField>
+        <FormField id="timeline" label="¿Cuándo te gustaría tenerlo?">
+          <select id="timeline" name="timeline" defaultValue="Sin fecha definida">
+            <option>Lo antes posible</option>
+            <option>1 mes</option>
+            <option>1–3 meses</option>
+            <option>Sin fecha definida</option>
+          </select>
+        </FormField>
+      </div>
       <label className="checkbox-field">
         <input type="checkbox" name="privacy" aria-invalid={Boolean(errors.privacy)} aria-describedby={errors.privacy ? "privacy-error" : undefined} />
         <span>Acepto el tratamiento de estos datos para responder a mi solicitud.</span>
       </label>
       {errors.privacy && <p className="field-error" id="privacy-error">{errors.privacy}</p>}
+      <p className="form-notice">Al continuar, se abrirá tu aplicación de correo para que revises y envíes el proyecto.</p>
       <div className="form-actions">
-        <button className="button" type="submit">Revisar solicitud</button>
+        <button className="button" type="submit">Enviar proyecto</button>
         {notice && <p className="form-notice" role="status">{notice}</p>}
       </div>
     </form>

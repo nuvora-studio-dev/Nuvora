@@ -1,23 +1,27 @@
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
-import { siteConfig } from "@/content/site";
 
-export const metadata: Metadata = { title: "Sobre Nuvora", description: "Principios y dirección de Nuvora." };
+export const metadata: Metadata = { title: { absolute: "Sobre Nuvora | Estudio de diseño y desarrollo web" }, description: "Conoce cómo trabajamos en Nuvora, un estudio independiente de diseño y desarrollo web." };
 
 export default function AboutPage() {
   return (
     <>
-      <PageIntro eyebrow="Nuvora" title="Tecnología diseñada con intención." description="Nuvora combina desarrollo, diseño y tecnología para crear productos y experiencias digitales de alto nivel." />
+      <PageIntro eyebrow="Nuvora" title="Un estudio digital pequeño por diseño." description="Nuvora es un estudio independiente de diseño y desarrollo web creado para trabajar de una forma más directa, cuidada y flexible." />
       <section className="section-space compact-top">
         <Container className="about-layout">
-          <h2>La claridad es una decisión de diseño.</h2>
+          <h2>Diseñamos y desarrollamos. Sin intermediarios.</h2>
           <div className="about-copy">
-            <p>Trabajamos desde el sistema completo: qué debe comunicar, cómo debe funcionar y qué necesita para evolucionar con coherencia.</p>
-            <p>La identidad aparece en el ritmo, la jerarquía, el detalle técnico y la forma de reducir fricción.</p>
+            <p>Trabajamos directamente en cada proyecto desde la primera conversación hasta el lanzamiento. Esto nos permite entender mejor el problema, tomar decisiones más rápido y mantener coherencia entre lo que se diseña y lo que finalmente se construye.</p>
           </div>
-          <div className="principle-grid about-principles">
-            {siteConfig.principles.map((principle) => <p key={principle}>{principle}</p>)}
+          <div className="about-principles">
+            <h2>Nuestra forma de trabajar</h2>
+            <div className="why-grid">
+              <article><h3>Claridad antes que decoración</h3><p>Cada elemento debe tener una razón para existir.</p></article>
+              <article><h3>Diseño y código juntos</h3><p>Lo que diseñamos debe poder construirse bien.</p></article>
+              <article><h3>Tecnología cuando aporta valor</h3><p>Utilizamos las herramientas adecuadas para cada proyecto, no tecnología por utilizar tecnología.</p></article>
+              <article><h3>Detalle hasta el lanzamiento</h3><p>Responsive, rendimiento y accesibilidad forman parte del producto final.</p></article>
+            </div>
           </div>
         </Container>
       </section>

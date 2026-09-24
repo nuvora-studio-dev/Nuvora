@@ -10,18 +10,18 @@ import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: { default: "Nuvora", template: "%s | Nuvora" },
+  title: { default: "Nuvora — Diseño y desarrollo web", template: "%s | Nuvora" },
   description: siteConfig.description,
   openGraph: {
     type: "website",
     locale: "es_ES",
     siteName: "Nuvora",
-    title: "Nuvora",
+    title: "Nuvora — Diseño y desarrollo web",
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nuvora",
+    title: "Nuvora — Diseño y desarrollo web",
     description: siteConfig.description,
   },
   robots: { index: false, follow: false },

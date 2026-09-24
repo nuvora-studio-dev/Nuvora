@@ -17,7 +17,7 @@ export function DesktopNav() {
           </Link>
         );
       })}
-      <Link className="button button-small" href="/contact" aria-current={pathname === "/contact" ? "page" : undefined}>Iniciar un proyecto</Link>
+      <Link className="button button-small" href="/contact" aria-current={pathname === "/contact" ? "page" : undefined}>Cuéntanos tu proyecto</Link>
     </nav>
   );
 }

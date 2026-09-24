@@ -3,19 +3,22 @@ import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
 import { ContactForm } from "@/components/contact/contact-form";
 
-export const metadata: Metadata = { title: "Contacto", description: "Iniciar una conversación con Nuvora." };
+export const metadata: Metadata = { title: "Contacto", description: "Cuéntanos tu proyecto web y descubre cómo Nuvora puede ayudarte a diseñarlo y desarrollarlo." };
 
 export default function ContactPage() {
   return (
     <>
-      <PageIntro eyebrow="Contacto" title="Todo buen proyecto empieza entendiendo el problema." description="Comparte el contexto, la necesidad y el punto en el que se encuentra tu proyecto." />
+      <PageIntro eyebrow="Contacto" title="Cuéntanos qué quieres construir." description="No necesitas tenerlo todo definido. Explícanos qué haces, qué necesitas y qué quieres conseguir. Nosotros te ayudaremos a convertirlo en un proyecto concreto." />
       <section className="section-space compact-top">
         <Container className="contact-layout">
           <div className="contact-context">
-            <h2>Empecemos por lo esencial.</h2>
-            <p>Describe el objetivo, el alcance y cualquier restricción relevante. Ese contexto nos permitirá valorar mejor el siguiente paso.</p>
+            <h2>Hablemos de tu proyecto.</h2>
+            <p>Comparte el contexto, el objetivo y el plazo que tienes en mente.</p>
           </div>
-          <ContactForm />
+          <div>
+            <ContactForm />
+            <p className="contact-alternative">¿Prefieres el email? <a href="mailto:nuvora.studio@outlook.com">nuvora.studio@outlook.com</a></p>
+          </div>
         </Container>
       </section>
     </>

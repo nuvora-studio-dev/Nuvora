@@ -8,17 +8,23 @@ export function Footer() {
       <div className="container footer-grid">
         <div>
           <BrandMark />
-          <p className="footer-statement">Diseño y tecnología con criterio.</p>
+          <p className="footer-statement">Diseño y desarrollo web para negocios y marcas que quieren hacer las cosas bien.</p>
         </div>
         <nav aria-label="Navegación del pie">
-          {siteConfig.nav.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
-          <Link href="/contact">Contacto</Link>
+          <strong>Navegación</strong>
+          {siteConfig.nav.map((item) => <Link key={item.href} href={item.href}>{item.href === "/about" ? "Nuvora" : item.label}</Link>)}
+        </nav>
+        <nav aria-label="Contacto">
+          <strong>Contacto</strong>
+          <a href="mailto:nuvora.studio@outlook.com">nuvora.studio@outlook.com</a>
         </nav>
         <nav aria-label="Información legal">
+          <strong>Legal</strong>
           <Link href="/legal">Aviso legal</Link>
           <Link href="/privacy">Privacidad</Link>
+          <Link href="/cookies">Cookies</Link>
         </nav>
-        <p className="footer-meta">© {new Date().getFullYear()} Nuvora</p>
+        <p className="footer-meta">© {new Date().getFullYear()} Nuvora. Todos los derechos reservados.</p>
       </div>
     </footer>
   );
