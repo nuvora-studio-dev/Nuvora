@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { TextLink } from "@/components/ui/text-link";
 import { siteConfig } from "@/content/site";
+import { withBasePath } from "@/lib/base-path";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
             </div>
           </div>
           <figure className="hero-art reveal delay-one">
-            <Image src="/brand/nuvora-hero-art.png" alt="Instalación abstracta de cintas azules inspirada en el gesto visual de Nuvora" fill priority sizes="(max-width: 767px) 100vw, 52vw" />
+            <Image src={withBasePath("/brand/nuvora-hero-art.png")} alt="Instalación abstracta de cintas azules inspirada en el gesto visual de Nuvora" fill priority sizes="(max-width: 767px) 100vw, 52vw" />
           </figure>
         </Container>
       </section>
@@ -59,7 +60,7 @@ export default function Home() {
               <TextLink href="/work">Ver el archivo</TextLink>
             </div>
             <figure className="work-visual">
-              <Image src="/brand/nuvora-detail-art.png" alt="Detalle material azul de la dirección visual de Nuvora" fill sizes="(max-width: 767px) 100vw, 58vw" />
+              <Image src={withBasePath("/brand/nuvora-detail-art.png")} alt="Detalle material azul de la dirección visual de Nuvora" fill sizes="(max-width: 767px) 100vw, 58vw" />
             </figure>
           </div>
         </Container>
