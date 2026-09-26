@@ -1,0 +1,225 @@
+.demo-site { min-height: 100vh; overflow: clip; }
+body:has(.demo-site)::before { display: none; }
+.demo-site h1, .demo-site h2, .demo-site h3 { letter-spacing: -.035em; }
+.demo-site a { transition: opacity 160ms ease, color 160ms ease, background 160ms ease; }
+.demo-site a:hover { opacity: .7; }
+.demo-site :focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.demo-wrap { width: min(calc(100% - 4rem), 1280px); margin-inline: auto; }
+.demo-site img { object-fit: cover; }
+.demo-mobile-nav { display: none; }
+
+/* Atria: dark editorial dining room. */
+.demo-atria { color: var(--demo-text); background: var(--demo-bg); font-family: Georgia, "Times New Roman", serif; }
+.atria-header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 88px; padding: 1rem 3vw; background: var(--demo-bg); }
+.atria-logo { display: flex; align-items: baseline; gap: .7rem; font: 500 2rem/1 var(--font-display); letter-spacing: -.045em; }
+.atria-logo span { max-width: 3.8rem; font: 500 .55rem/1.3 var(--font-body); letter-spacing: .14em; }
+.atria-header nav { display: flex; gap: clamp(1rem, 3vw, 3rem); font: 500 .8rem var(--font-body); }
+.atria-reserve { padding: .8rem 1.1rem; border: 1px solid #b9a98e; font: 600 .8rem var(--font-body); white-space: nowrap; }
+.atria-hero { position: relative; min-height: min(790px, calc(100svh - 88px)); display: flex; align-items: end; overflow: hidden; }
+.atria-hero-image { position: absolute; inset: 0; }
+.atria-hero-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(12 14 12 / .78), transparent 85%), linear-gradient(0deg, rgb(12 14 12 / .58), transparent 55%); }
+.atria-hero-content { position: relative; z-index: 1; width: min(100% - 6vw, 1280px); margin: 0 auto 7%; }
+.atria-hero-content p, .atria-side-note, .atria-intro-label, .atria-section-heading span, .atria-space-copy span, .atria-book > span { font: 600 .7rem var(--font-body); letter-spacing: .18em; }
+.atria-hero h1 { max-width: 12ch; margin: 1.5rem 0 2rem; font: 400 clamp(4.5rem, 9vw, 10rem)/.93 Georgia, serif; letter-spacing: -.055em; }
+.atria-hero-content a, .atria-intro a, .atria-space a, .atria-book a { display: inline-flex; gap: 2rem; padding-bottom: .6rem; border-bottom: 1px solid var(--demo-readable-accent); font: 600 .9rem var(--font-body); }
+.atria-side-note { position: absolute; right: 3vw; bottom: 2rem; z-index: 1; font-size: .58rem; }
+.atria-intro { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; padding-block: clamp(6rem, 10vw, 11rem); }
+.atria-intro-label { color: var(--demo-readable-accent); }
+.atria-intro h2 { max-width: 17ch; font: 400 clamp(3rem, 5vw, 6rem)/1 Georgia, serif; }
+.atria-intro p { max-width: 40rem; margin: 2rem 0; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); font-size: 1.15rem; }
+.atria-menu { padding-block: clamp(6rem, 10vw, 10rem); color: var(--demo-ink); background: var(--demo-surface); }
+.atria-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
+.atria-section-heading h2 { margin-top: 1.5rem; font: 400 clamp(4rem, 7vw, 8rem)/.95 Georgia, serif; }
+.atria-section-heading h2 em { font-weight: 400; }
+.atria-section-heading p { max-width: 18rem; font-size: .95rem; }
+.atria-menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 5rem; }
+.atria-menu-grid > div { border-top: 1px solid #8c8b80; padding-top: 1.5rem; }
+.atria-menu-grid h3 { margin-bottom: 1rem; font: 400 2rem Georgia, serif; }
+.atria-menu-grid ul { padding: 0; margin: 0; list-style: none; }
+.atria-menu-grid li { padding: 1rem 0; border-bottom: 1px solid #bcbab0; }
+.atria-space { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 660px; }
+.atria-space-image { position: relative; min-height: 500px; }
+.atria-space-copy { display: flex; flex-direction: column; align-items: start; justify-content: center; padding: clamp(3rem, 7vw, 9rem); }
+.atria-space-copy span { color: var(--demo-readable-accent); }
+.atria-space-copy h2 { margin-top: 2rem; font: 400 clamp(3.5rem, 5vw, 6rem)/1 Georgia, serif; }
+.atria-space-copy p { max-width: 27rem; margin: 2rem 0; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.atria-gallery { display: grid; grid-template-columns: 1.25fr .75fr; gap: 1.25rem; padding-block: clamp(6rem, 10vw, 10rem); }
+.atria-gallery > div { grid-column: 1 / -1; display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding-bottom: 1rem; }
+.atria-gallery > div span { color: var(--demo-readable-accent); font: 600 .7rem var(--font-body); letter-spacing: .18em; }
+.atria-gallery h2 { max-width: 17ch; font: 400 clamp(2.8rem, 5vw, 6rem)/1 Georgia, serif; }
+.atria-gallery figure { position: relative; min-height: clamp(20rem, 40vw, 35rem); margin: 0; }
+.atria-book { padding-block: clamp(7rem, 12vw, 13rem); text-align: center; border-top: 1px solid #474941; }
+.atria-book > span { color: var(--demo-readable-accent); }
+.atria-book h2 { max-width: 17ch; margin: 2rem auto; font: 400 clamp(3.5rem, 6vw, 7rem)/1 Georgia, serif; }
+.atria-book p { max-width: 32rem; margin: 0 auto 2rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.atria-footer { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 2rem 3vw; border-top: 1px solid #474941; font: 500 .7rem var(--font-body); }
+.atria-footer > span { font-size: 1.5rem; }
+
+/* Pulse: utilitarian training editorial, no neon effects. */
+.demo-pulse { color: var(--demo-text); background: var(--demo-bg); font-family: var(--font-body); }
+.pulse-header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 78px; padding: 1rem 3vw; background: var(--demo-bg); }
+.pulse-logo { font-size: 1.75rem; font-weight: 900; font-style: italic; letter-spacing: -.06em; }
+.pulse-logo span { font-size: .65rem; font-style: normal; font-weight: 600; letter-spacing: .06em; }
+.pulse-header nav { display: flex; gap: clamp(1rem, 3vw, 3rem); font-size: .8rem; font-weight: 700; text-transform: uppercase; }
+.pulse-header-cta, .pulse-hero-copy a, .pulse-space-copy a, .pulse-close a { display: inline-flex; justify-content: center; padding: .85rem 1.25rem; color: var(--demo-accent-ink); background: var(--demo-accent); font-size: .8rem; font-weight: 800; text-transform: uppercase; white-space: nowrap; }
+.pulse-hero { position: relative; display: grid; grid-template-columns: 42% 58%; min-height: min(790px, calc(100svh - 78px)); }
+.pulse-hero-copy { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: start; justify-content: center; padding: clamp(3rem, 5vw, 7rem) 0 clamp(5rem, 7vw, 8rem) 3vw; }
+.pulse-hero-copy > p:first-child, .pulse-statement > p, .pulse-space-copy > span, .pulse-close > span { color: var(--demo-readable-accent); font-size: .7rem; font-weight: 800; letter-spacing: .17em; }
+.pulse-hero h1 { width: 120%; margin: 2rem 0; font-size: clamp(5rem, 9vw, 10rem); font-weight: 900; font-style: italic; line-height: .84; letter-spacing: -.07em; text-transform: uppercase; }
+.pulse-hero h1 span { color: var(--demo-readable-accent); }
+.pulse-hero-copy > p:not(:first-child) { max-width: 25rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); font-size: 1.05rem; }
+.pulse-hero-copy a { margin-top: 1.5rem; }
+.pulse-hero-image { position: relative; min-height: 620px; }
+.pulse-hero-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--demo-bg), transparent 22%); }
+.pulse-hero-bottom { position: absolute; z-index: 1; right: 3vw; bottom: 1rem; left: 3vw; display: flex; justify-content: space-between; gap: 2rem; font-size: .62rem; font-weight: 700; letter-spacing: .12em; }
+.pulse-statement { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 2rem; align-items: start; padding-block: clamp(6rem, 11vw, 11rem); }
+.pulse-statement h2 { font-size: clamp(4rem, 7vw, 8rem); font-weight: 900; font-style: italic; line-height: .88; text-transform: uppercase; }
+.pulse-statement > div { padding-top: .5rem; }
+.pulse-statement > div p { margin: 0 0 2rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.pulse-statement > div a { border-bottom: 1px solid var(--demo-readable-accent); padding-bottom: .5rem; font-size: .85rem; font-weight: 800; }
+.pulse-programs { padding-block: clamp(6rem, 10vw, 10rem); color: var(--demo-accent-ink); background: var(--demo-accent); }
+.pulse-section-head { display: flex; align-items: end; justify-content: space-between; gap: 3rem; }
+.pulse-section-head h2 { max-width: 13ch; font-size: clamp(3.5rem, 6vw, 7rem); font-weight: 900; font-style: italic; line-height: .9; text-transform: uppercase; }
+.pulse-section-head p { max-width: 20rem; }
+.pulse-program-list { margin-top: 5rem; border-top: 2px solid currentColor; }
+.pulse-program-list article { display: grid; grid-template-columns: 4rem 1fr 1fr 3rem; align-items: center; gap: 2rem; min-height: 9rem; border-bottom: 2px solid currentColor; }
+.pulse-program-list article > span { font-size: .8rem; font-weight: 800; }
+.pulse-program-list h3 { font-size: clamp(2rem, 4vw, 4rem); font-weight: 900; font-style: italic; text-transform: uppercase; }
+.pulse-program-list p { max-width: 24rem; }
+.pulse-program-list a { font-size: 2.5rem; line-height: 1; }
+.pulse-space { display: grid; grid-template-columns: 1fr 1fr; min-height: 650px; }
+.pulse-space-image { position: relative; min-height: 500px; }
+.pulse-space-copy { display: flex; flex-direction: column; align-items: start; justify-content: center; padding: clamp(3rem, 6vw, 8rem); }
+.pulse-space-copy h2 { margin: 2rem 0; font-size: clamp(3rem, 5vw, 6rem); font-weight: 900; font-style: italic; line-height: .95; text-transform: uppercase; }
+.pulse-space-copy p { max-width: 30rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.pulse-space-copy a { margin-top: 2rem; }
+.pulse-coaches { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 2rem; align-items: start; padding-block: clamp(6rem, 10vw, 10rem); border-bottom: 1px solid #51564e; }
+.pulse-coaches > span { color: var(--demo-readable-accent); font-size: .7rem; font-weight: 800; letter-spacing: .17em; }
+.pulse-coaches h2 { max-width: 13ch; font-size: clamp(3rem, 5vw, 6rem); font-weight: 900; font-style: italic; line-height: .92; text-transform: uppercase; }
+.pulse-coaches > div { grid-column: 2 / -1; display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+.pulse-coaches p { max-width: 30rem; margin: 0; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.pulse-coaches ul, .aura-voices ul { margin: 0; padding: 0; list-style: none; }
+.pulse-coaches li { display: grid; gap: .25rem; padding-block: .75rem; border-top: 1px solid #51564e; }
+.pulse-coaches li strong { text-transform: uppercase; }
+.pulse-coaches li span { color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); font-size: .9rem; }
+.pulse-coaches a { grid-column: 2; align-self: end; justify-self: start; padding-bottom: .5rem; border-bottom: 1px solid var(--demo-readable-accent); font-size: .85rem; font-weight: 800; }
+.pulse-close { padding-block: clamp(7rem, 11vw, 12rem); text-align: center; }
+.pulse-close h2 { margin: 1rem 0; font-size: clamp(5rem, 12vw, 12rem); font-weight: 900; font-style: italic; line-height: .9; text-transform: uppercase; }
+.pulse-close p { max-width: 31rem; margin: 1rem auto 2rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.pulse-footer { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 2rem 3vw; border-top: 1px solid #51564e; font-size: .7rem; }
+.pulse-footer strong { font-size: 1.5rem; font-style: italic; }
+
+/* Aura: mineral tones, spacious typography and a softer rhythm. */
+.demo-aura { color: var(--demo-text); background: var(--demo-bg); font-family: var(--font-body); }
+.aura-header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 90px; padding: 1rem 3vw; background: var(--demo-bg); }
+.aura-logo { display: flex; flex-direction: column; font-size: 2.35rem; font-weight: 300; letter-spacing: -.075em; line-height: .9; }
+.aura-logo span { margin-top: .4rem; font-size: .55rem; font-weight: 600; letter-spacing: .26em; }
+.aura-header nav { display: flex; gap: clamp(1rem, 3vw, 3rem); font-size: .83rem; }
+.aura-book-link { padding: .7rem 0; border-bottom: 1px solid var(--demo-text); font-size: .83rem; font-weight: 700; white-space: nowrap; }
+.aura-hero { display: grid; grid-template-columns: 45% 55%; min-height: min(760px, calc(100svh - 90px)); }
+.aura-hero-copy { display: flex; flex-direction: column; align-items: start; justify-content: center; padding: 4rem clamp(2rem, 5vw, 7rem); }
+.aura-hero-copy > span, .aura-philosophy > span, .aura-section-head > span, .aura-studio-copy > span, .aura-close > span { font-size: .67rem; font-weight: 700; letter-spacing: .2em; }
+.aura-hero h1 { margin: 2rem 0; font-size: clamp(4.5rem, 7vw, 8.5rem); font-weight: 300; line-height: .94; letter-spacing: -.075em; }
+.aura-hero-copy p { max-width: 24rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); font-size: 1.05rem; }
+.aura-hero-copy a, .aura-studio-copy a, .aura-close a { display: inline-flex; margin-top: 2rem; padding-bottom: .65rem; border-bottom: 1px solid currentColor; font-size: .88rem; font-weight: 700; }
+.aura-hero-image { position: relative; min-height: 550px; }
+.aura-philosophy { display: grid; grid-template-columns: 1fr 2.5fr 1.2fr; align-items: start; gap: 2rem; padding-block: clamp(7rem, 12vw, 13rem); }
+.aura-philosophy h2 { max-width: 17ch; font-size: clamp(3.5rem, 5.5vw, 7rem); font-weight: 300; line-height: 1; letter-spacing: -.07em; }
+.aura-philosophy p { margin: 0; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.aura-treatments { padding-block: clamp(6rem, 10vw, 10rem); color: var(--demo-accent-ink); background: var(--demo-accent); }
+.aura-section-head { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 2rem; align-items: end; }
+.aura-section-head h2 { max-width: 15ch; font-size: clamp(3.5rem, 5vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -.07em; }
+.aura-section-head p { color: var(--demo-accent-ink); }
+.aura-treatment-list { margin-top: 5rem; border-top: 1px solid #a8b3a6; }
+.aura-treatment-list article { display: grid; grid-template-columns: 5rem 1fr 3rem; align-items: center; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid #a8b3a6; }
+.aura-treatment-list article > span { font-size: .78rem; }
+.aura-treatment-list h3 { font-size: clamp(2rem, 3.4vw, 4rem); font-weight: 300; }
+.aura-treatment-list p { max-width: 33rem; margin: .75rem 0 0; color: var(--demo-accent-ink); }
+.aura-treatment-list a { font-size: 2rem; }
+.aura-studio { display: grid; grid-template-columns: 1fr 1fr; min-height: 650px; }
+.aura-studio-image { position: relative; min-height: 500px; }
+.aura-studio-copy { display: flex; flex-direction: column; align-items: start; justify-content: center; padding: clamp(3rem, 6vw, 8rem); }
+.aura-studio-copy h2 { max-width: 12ch; margin-top: 2rem; font-size: clamp(3.5rem, 5vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -.07em; }
+.aura-studio-copy p { max-width: 25rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.aura-voices { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding-block: clamp(6rem, 10vw, 10rem); border-top: 1px solid #b6beb3; }
+.aura-voices h2 { max-width: 14ch; margin-top: 1.5rem; font-size: clamp(3rem, 5vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -.07em; }
+.aura-voices > div p { max-width: 27rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.aura-voices ul { margin-top: 2rem; }
+.aura-voices li { display: grid; gap: .3rem; padding: 1rem 0; border-top: 1px solid #b6beb3; }
+.aura-voices li strong { font-weight: 650; }
+.aura-voices li span { color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); font-size: .9rem; }
+.aura-voices blockquote { margin: 0; padding: 2rem 0 0; border-top: 1px solid #b6beb3; }
+.aura-voices blockquote p { margin: 0 0 1.5rem; font-size: clamp(1.5rem, 2.5vw, 2.5rem); line-height: 1.3; }
+.aura-voices cite { color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); font-size: .78rem; font-style: normal; }
+.aura-close { padding-block: clamp(7rem, 12vw, 13rem); text-align: center; border-top: 1px solid #b6beb3; }
+.aura-close h2 { margin: 1.5rem 0; font-size: clamp(4rem, 7vw, 8rem); font-weight: 300; letter-spacing: -.07em; }
+.aura-close p { max-width: 30rem; margin: auto; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
+.aura-footer { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 2rem 3vw; border-top: 1px solid #b6beb3; font-size: .7rem; }
+.aura-footer strong { font-size: 2rem; font-weight: 300; }
+
+@media (max-width: 900px) {
+  .atria-header nav, .pulse-header nav, .aura-header nav { display: none; }
+  .demo-mobile-nav { position: relative; display: block; margin-left: auto; font: 600 .8rem var(--font-body); }
+  .demo-mobile-nav summary { display: grid; place-items: center; min-width: 3.5rem; min-height: 2.75rem; cursor: pointer; list-style: none; }
+  .demo-mobile-nav summary::-webkit-details-marker { display: none; }
+  .demo-mobile-nav > div { position: absolute; z-index: 5; top: calc(100% + 1rem); right: 0; display: grid; min-width: 13rem; padding: .5rem; background: #30352f; color: #f4f4ef; box-shadow: 0 1rem 2rem rgb(0 0 0 / .25); }
+  .demo-mobile-nav a { display: flex; align-items: center; min-height: 2.75rem; padding: .35rem .75rem; }
+  .pulse-statement, .aura-philosophy, .aura-section-head { grid-template-columns: 1fr 2fr; }
+  .pulse-statement > div, .aura-philosophy p, .aura-section-head p { grid-column: 2; }
+  .pulse-program-list article { grid-template-columns: 3rem 1fr 3rem; }
+  .pulse-program-list p { grid-column: 2; margin: 0 0 1.5rem; }
+  .pulse-program-list a { grid-column: 3; grid-row: 1 / 3; }
+}
+@media (max-width: 767px) {
+  .demo-site a:not(.atria-logo):not(.pulse-logo):not(.aura-logo) { display: inline-flex; align-items: center; min-height: 44px; }
+  .demo-wrap { width: min(calc(100% - 2.5rem), 1280px); }
+  .atria-header, .pulse-header, .aura-header { min-height: 72px; padding-inline: 1.25rem; }
+  .atria-header, .pulse-header, .aura-header { gap: .5rem; }
+  .atria-logo { font-size: 1.6rem; }
+  .atria-logo span { display: none; }
+  .pulse-logo { font-size: 1.45rem; }
+  .pulse-logo span { display: none; }
+  .aura-logo { font-size: 1.8rem; }
+  .atria-reserve, .pulse-header-cta { padding: .7rem .8rem; }
+  .atria-hero { min-height: 650px; }
+  .atria-hero-content { width: calc(100% - 2.5rem); margin-bottom: 6rem; }
+  .atria-hero h1 { font-size: clamp(4rem, 14vw, 6rem); }
+  .atria-side-note { right: auto; left: 1.25rem; bottom: 1.25rem; }
+  .atria-intro, .atria-menu-grid, .atria-space, .pulse-hero, .pulse-statement, .pulse-space, .pulse-coaches, .aura-hero, .aura-philosophy, .aura-section-head, .aura-studio, .aura-voices { grid-template-columns: 1fr; }
+  .atria-intro, .pulse-statement, .aura-philosophy { gap: 2rem; }
+  .atria-section-heading, .pulse-section-head { align-items: start; flex-direction: column; }
+  .atria-menu-grid { gap: 2.5rem; margin-top: 3rem; }
+  .atria-gallery { grid-template-columns: 1fr; }
+  .atria-gallery > div { display: block; }
+  .atria-gallery h2 { margin-top: 1rem; }
+  .atria-gallery figure { min-height: 20rem; }
+  .atria-space-image, .pulse-space-image, .aura-studio-image { min-height: 360px; }
+  .atria-space-copy, .pulse-space-copy, .aura-studio-copy { padding: 4rem 1.25rem; }
+  .pulse-hero { display: flex; flex-direction: column-reverse; }
+  .pulse-hero-image { min-height: 390px; }
+  .pulse-hero-image::after { display: none; }
+  .pulse-hero-copy { padding: 3rem 1.25rem 5rem; }
+  .pulse-hero h1 { width: 100%; font-size: clamp(4rem, 15vw, 7rem); }
+  .pulse-hero-bottom { display: none; }
+  .pulse-statement > div, .aura-philosophy p, .aura-section-head p { grid-column: auto; }
+  .pulse-coaches > div, .pulse-coaches a { grid-column: auto; grid-row: auto; }
+  .pulse-coaches > div { grid-template-columns: 1fr; }
+  .pulse-program-list article { gap: .75rem; grid-template-columns: 2rem 1fr 2rem; }
+  .pulse-program-list h3 { font-size: 2rem; }
+  .pulse-program-list a { font-size: 1.8rem; }
+  .aura-hero-copy { padding: 5rem 1.25rem; }
+  .aura-hero h1 { font-size: clamp(4rem, 14vw, 7rem); }
+  .aura-hero-image { min-height: 430px; }
+  .aura-treatment-list article { grid-template-columns: 2rem 1fr 2rem; gap: .75rem; }
+  .atria-footer, .pulse-footer, .aura-footer { flex-wrap: wrap; padding-inline: 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) { .demo-site a { transition: none; } }
+
+.demo-contact-details { display: grid; justify-items: center; gap: .7rem; margin-top: 2rem; }
+.demo-contact-details > p { margin: 0; }
+.demo-contact-details button { min-height: 44px; padding: .85rem 1.25rem; border: 0; color: var(--demo-accent-ink); background: var(--demo-accent); font-weight: 700; cursor: pointer; }
+.demo-contact-notice { max-width: 36rem; font: .9rem/1.6 var(--font-body); }
+.demo-site h1, .demo-site h2, .demo-site h3 { overflow-wrap: anywhere; text-wrap: balance; }
+.atria-logo, .pulse-logo, .aura-logo { max-width: 45%; overflow-wrap: anywhere; }
+.atria-logo { flex-wrap: wrap; }
+@media (max-width: 767px) { .atria-logo, .pulse-logo, .aura-logo { max-width: 35%; font-size: clamp(1rem, 4.5vw, 1.6rem); } }

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { TextLink } from "@/components/ui/text-link";
-import { siteConfig } from "@/content/site";
 import { withBasePath } from "@/lib/base-path";
 
 export default function Home() {
@@ -13,11 +12,8 @@ export default function Home() {
           <div className="hero-copy reveal">
             <p className="eyebrow">Estudio de diseño y desarrollo web</p>
             <h1>Creamos webs que hacen que tu negocio se vea tan profesional como realmente es.</h1>
-            <p>Diseñamos y desarrollamos páginas web rápidas, modernas y pensadas para convertir visitas en clientes. Sin plantillas genéricas. Sin complicaciones innecesarias.</p>
-            <div className="hero-actions">
-              <Link className="button" href="/contact">Cuéntanos tu proyecto</Link>
-              <TextLink href="/work">Ver proyectos</TextLink>
-            </div>
+            <p>Diseñamos y desarrollamos páginas web rápidas, modernas y orientadas a generar confianza, comunicar mejor y facilitar que tus visitantes den el siguiente paso.</p>
+            <Link className="button" href="/contact">Cuéntanos tu proyecto</Link>
             <p className="hero-services">Diseño · Desarrollo · Optimización · Mantenimiento</p>
           </div>
           <figure className="hero-art reveal delay-one">
@@ -39,8 +35,8 @@ export default function Home() {
       <section className="services-preview section-space view-reveal">
         <Container>
           <div className="section-heading">
-            <h2>De la idea al sistema.</h2>
-            <p>Unimos criterio visual, producto y desarrollo en una misma dirección.</p>
+            <h2>Todo lo necesario para construir una buena web.</h2>
+            <p>Diseño, desarrollo y optimización trabajando como partes del mismo proyecto.</p>
           </div>
           <div className="service-list">
             <article className="service-row">
@@ -75,25 +71,9 @@ export default function Home() {
           <h2>Menos ruido. Más criterio.</h2>
           <div className="why-grid">
             <article><h3><span>01</span> Diseño con intención</h3><p>Cada decisión visual tiene una función. Diseñamos para comunicar, no para decorar.</p></article>
-            <article><h3><span>02</span> Desarrollo a medida</h3><p>Construimos sobre una base técnica sólida, sin depender de plantillas que limiten el proyecto.</p></article>
+            <article><h3><span>02</span> Desarrollo a medida</h3><p>Construimos sobre una base técnica sólida y adaptamos cada dirección visual a las necesidades del proyecto.</p></article>
             <article><h3><span>03</span> Rendimiento desde el principio</h3><p>Velocidad, responsive, accesibilidad y SEO técnico forman parte del proyecto, no son extras posteriores.</p></article>
             <article><h3><span>04</span> Comunicación directa</h3><p>Hablas directamente con las personas que diseñan y desarrollan tu proyecto. Sin intermediarios.</p></article>
-          </div>
-        </Container>
-      </section>
-
-      <section className="work-preview section-space view-reveal">
-        <Container>
-          <div className="work-frame">
-            <div className="work-copy">
-              <p className="eyebrow">Proyectos seleccionados</p>
-              <h2>El diseño importa. El resultado también.</h2>
-              <p>Una selección de productos y experiencias digitales donde diseño, tecnología y atención al detalle trabajan en la misma dirección.</p>
-              <TextLink href="/work">Explorar proyectos</TextLink>
-            </div>
-            <figure className="work-visual">
-              <Image src={withBasePath("/brand/nuvora-detail-art.png")} alt="Detalle material azul de la dirección visual de Nuvora" fill sizes="(max-width: 767px) 100vw, 58vw" />
-            </figure>
           </div>
         </Container>
       </section>
@@ -113,11 +93,15 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="principles section-space view-reveal">
+      <section className="standard section-space view-reveal">
         <Container>
-          <h2>Un método que elimina ruido.</h2>
-          <div className="principle-grid">
-            {siteConfig.principles.map((principle) => <p key={principle}>{principle}</p>)}
+          <h2>El estándar Nuvora.</h2>
+          <div className="why-grid">
+            <article><h3>Diseño responsive de verdad</h3><p>Cada interfaz se diseña para funcionar correctamente desde móvil hasta pantallas de escritorio, no simplemente para encogerse.</p></article>
+            <article><h3>Rendimiento desde el principio</h3><p>Optimizamos estructura, recursos e interacción para construir experiencias rápidas y estables.</p></article>
+            <article><h3>Accesibilidad</h3><p>Jerarquía semántica, navegación por teclado, estados de foco y contraste forman parte del desarrollo.</p></article>
+            <article><h3>SEO técnico</h3><p>Construimos una base preparada para buscadores mediante estructura semántica, metadata y buenas prácticas técnicas.</p></article>
+            <article><h3>Código mantenible</h3><p>Desarrollamos pensando también en lo que ocurrirá después del lanzamiento: mantenimiento, evolución y nuevas funcionalidades.</p></article>
           </div>
         </Container>
       </section>

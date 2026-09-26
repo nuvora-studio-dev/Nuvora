@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageIntro eyebrow="Servicios" title="Todo lo necesario para construir una presencia digital profesional." description="Desde una landing page hasta una web corporativa completa. Diseñamos y desarrollamos cada proyecto en función de sus objetivos, no alrededor de una plantilla." />
+      <PageIntro eyebrow="Servicios" title="Todo lo necesario para construir una presencia digital profesional." description="Desde una landing page hasta una web corporativa completa. Diseñamos y desarrollamos cada proyecto en función de sus objetivos, con una dirección visual propia o una base adaptable." />
       <section className="section-space compact-top">
         <Container>
           <div className="service-list large">

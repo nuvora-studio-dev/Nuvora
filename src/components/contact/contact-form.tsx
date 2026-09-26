@@ -1,12 +1,20 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useSyncExternalStore } from "react";
+import { readDemoConfig, palettes } from "@/templates/personalization";
+import { getTemplate } from "@/templates/registry";
 
 type FieldErrors = Partial<Record<"name" | "email" | "project" | "message" | "privacy", string>>;
 
 export function ContactForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [notice, setNotice] = useState("");
+  const search = useSyncExternalStore(() => () => {}, () => window.location.search, () => "");
+  const params = new URLSearchParams(search);
+  const selected = getTemplate(params.get("template") ?? "");
+  const template = selected?.name ?? "";
+  const configuration = selected ? readDemoConfig(params, { business: selected.name, headline: selected.headline }) : null;
+
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -34,6 +42,16 @@ export function ContactForm() {
       `Email: ${email}`,
       `Empresa o proyecto: ${String(data.get("company") ?? "").trim()}`,
       `Qué necesitas: ${project}`,
+      ...(selected && configuration ? [
+        `Dirección visual de partida: ${template}`,
+        `Marca en la demo: ${configuration.business}`,
+        `Titular: ${configuration.headline}`,
+        `Paleta: ${palettes[selected.slug][configuration.palette].name}`,
+        `Acento: ${configuration.accent || palettes[selected.slug][configuration.palette].accent}`,
+        `Contacto del negocio: ${configuration.email} ${configuration.phone}`,
+        `Ubicación: ${configuration.location}`,
+        `Sección adicional: ${configuration.showDetails ? "visible" : "oculta"}`,
+      ] : []),
       `Presupuesto aproximado: ${String(data.get("budget") ?? "")}`,
       `Cuándo te gustaría tenerlo: ${String(data.get("timeline") ?? "")}`,
       "",
@@ -44,6 +62,8 @@ export function ContactForm() {
   }
 
   return (
+    <>
+    {template && <div className="contact-template-context"><strong>Partimos de {template}</strong><p>Incluiremos tu configuración de marca, colores y contenido como contexto de tu consulta.</p></div>}
     <form className="contact-form" onSubmit={handleSubmit} noValidate>
       <div className="field-grid">
         <FormField id="name" label="Nombre" error={errors.name}>
@@ -59,6 +79,7 @@ export function ContactForm() {
       <FormField id="project" label="¿Qué necesitas?" error={errors.project}>
         <select id="project" name="project" defaultValue="" aria-invalid={Boolean(errors.project)} aria-describedby={errors.project ? "project-error" : undefined}>
           <option value="" disabled>Selecciona una opción</option>
+          {template && <option value="Web basada en dirección visual" >Web basada en dirección visual</option>}
           <option>Nueva página web</option>
           <option>Rediseñar mi web</option>
           <option>Landing page</option>
@@ -99,6 +120,7 @@ export function ContactForm() {
         {notice && <p className="form-notice" role="status">{notice}</p>}
       </div>
     </form>
+    </>
   );
 }
 
