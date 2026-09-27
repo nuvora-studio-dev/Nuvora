@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Nuvora — Diseño y desarrollo web",
     description: siteConfig.description,
   },
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {

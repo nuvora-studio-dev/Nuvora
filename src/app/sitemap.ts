@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const origin = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  return ["/plantillas", ...templateList.map(({ slug }) => `/plantillas/${slug}`)].map((path) => ({
-    url: new URL(withBasePath(`${path}/`), origin).toString(),
+  return ["/", "/services", "/about", "/contact", "/plantillas", ...templateList.map(({ slug }) => `/plantillas/${slug}`)].map((path) => ({
+    url: new URL(withBasePath(path === "/" ? path : `${path}/`), origin).toString(),
   }));
 }
