@@ -4,7 +4,7 @@ import { TemplateCatalog } from "@/components/templates/catalog";
 import { withBasePath } from "@/lib/base-path";
 
 export const metadata: Metadata = {
-  title: "Plantillas y direcciones visuales",
+  title: "Demos y direcciones visuales",
   description: "Explora diseños base de Nuvora para gastronomía, fitness y bienestar. Cada dirección visual se adapta a tu negocio.",
   alternates: { canonical: withBasePath("/plantillas") },
   robots: { index: true, follow: true },

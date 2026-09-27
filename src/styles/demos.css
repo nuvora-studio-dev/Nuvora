@@ -1,5 +1,4 @@
 .demo-site { min-height: 100vh; overflow: clip; }
-body:has(.demo-site)::before { display: none; }
 .demo-site h1, .demo-site h2, .demo-site h3 { letter-spacing: -.035em; }
 .demo-site a { transition: opacity 160ms ease, color 160ms ease, background 160ms ease; }
 .demo-site a:hover { opacity: .7; }
@@ -12,7 +11,7 @@ body:has(.demo-site)::before { display: none; }
 .demo-atria { color: var(--demo-text); background: var(--demo-bg); font-family: Georgia, "Times New Roman", serif; }
 .atria-header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 88px; padding: 1rem 3vw; background: var(--demo-bg); }
 .atria-logo { display: flex; align-items: baseline; gap: .7rem; font: 500 2rem/1 var(--font-display); letter-spacing: -.045em; }
-.atria-logo span { max-width: 3.8rem; font: 500 .55rem/1.3 var(--font-body); letter-spacing: .14em; }
+.atria-logo span { flex-shrink: 0; white-space: nowrap; font: 500 .55rem/1.3 var(--font-body); letter-spacing: .14em; }
 .atria-header nav { display: flex; gap: clamp(1rem, 3vw, 3rem); font: 500 .8rem var(--font-body); }
 .atria-reserve { padding: .8rem 1.1rem; border: 1px solid #b9a98e; font: 600 .8rem var(--font-body); white-space: nowrap; }
 .atria-hero { position: relative; min-height: min(790px, calc(100svh - 88px)); display: flex; align-items: end; overflow: hidden; }
@@ -59,7 +58,7 @@ body:has(.demo-site)::before { display: none; }
 .demo-pulse { color: var(--demo-text); background: var(--demo-bg); font-family: var(--font-body); }
 .pulse-header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 78px; padding: 1rem 3vw; background: var(--demo-bg); }
 .pulse-logo { font-size: 1.75rem; font-weight: 900; font-style: italic; letter-spacing: -.06em; }
-.pulse-logo span { font-size: .65rem; font-style: normal; font-weight: 600; letter-spacing: .06em; }
+.pulse-logo span { display: inline-block; white-space: nowrap; font-size: .65rem; font-style: normal; font-weight: 600; letter-spacing: .06em; }
 .pulse-header nav { display: flex; gap: clamp(1rem, 3vw, 3rem); font-size: .8rem; font-weight: 700; text-transform: uppercase; }
 .pulse-header-cta, .pulse-hero-copy a, .pulse-space-copy a, .pulse-close a { display: inline-flex; justify-content: center; padding: .85rem 1.25rem; color: var(--demo-accent-ink); background: var(--demo-accent); font-size: .8rem; font-weight: 800; text-transform: uppercase; white-space: nowrap; }
 .pulse-hero { position: relative; display: grid; grid-template-columns: 42% 58%; min-height: min(790px, calc(100svh - 78px)); }
@@ -113,7 +112,7 @@ body:has(.demo-site)::before { display: none; }
 .demo-aura { color: var(--demo-text); background: var(--demo-bg); font-family: var(--font-body); }
 .aura-header { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 90px; padding: 1rem 3vw; background: var(--demo-bg); }
 .aura-logo { display: flex; flex-direction: column; font-size: 2.35rem; font-weight: 300; letter-spacing: -.075em; line-height: .9; }
-.aura-logo span { margin-top: .4rem; font-size: .55rem; font-weight: 600; letter-spacing: .26em; }
+.aura-logo span { white-space: nowrap; margin-top: .4rem; font-size: .55rem; font-weight: 600; letter-spacing: .26em; }
 .aura-header nav { display: flex; gap: clamp(1rem, 3vw, 3rem); font-size: .83rem; }
 .aura-book-link { padding: .7rem 0; border-bottom: 1px solid var(--demo-text); font-size: .83rem; font-weight: 700; white-space: nowrap; }
 .aura-hero { display: grid; grid-template-columns: 45% 55%; min-height: min(760px, calc(100svh - 90px)); }
@@ -175,6 +174,8 @@ body:has(.demo-site)::before { display: none; }
   .demo-wrap { width: min(calc(100% - 2.5rem), 1280px); }
   .atria-header, .pulse-header, .aura-header { min-height: 72px; padding-inline: 1.25rem; }
   .atria-header, .pulse-header, .aura-header { gap: .5rem; }
+  .demo-mobile-nav { position: static; flex-shrink: 0; }
+  .demo-mobile-nav > div { top: 100%; right: 1.25rem; max-width: calc(100vw - 2.5rem); }
   .atria-logo { font-size: 1.6rem; }
   .atria-logo span { display: none; }
   .pulse-logo { font-size: 1.45rem; }
@@ -220,6 +221,6 @@ body:has(.demo-site)::before { display: none; }
 .demo-contact-details button { min-height: 44px; padding: .85rem 1.25rem; border: 0; color: var(--demo-accent-ink); background: var(--demo-accent); font-weight: 700; cursor: pointer; }
 .demo-contact-notice { max-width: 36rem; font: .9rem/1.6 var(--font-body); }
 .demo-site h1, .demo-site h2, .demo-site h3 { overflow-wrap: anywhere; text-wrap: balance; }
-.atria-logo, .pulse-logo, .aura-logo { max-width: 45%; overflow-wrap: anywhere; }
+.atria-logo, .pulse-logo, .aura-logo { min-width: 0; max-width: 45%; overflow-wrap: anywhere; }
 .atria-logo { flex-wrap: wrap; }
 @media (max-width: 767px) { .atria-logo, .pulse-logo, .aura-logo { max-width: 35%; font-size: clamp(1rem, 4.5vw, 1.6rem); } }

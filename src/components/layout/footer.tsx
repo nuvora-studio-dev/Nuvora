@@ -18,6 +18,11 @@ export function Footer() {
           <strong>Contacto</strong>
           <a href="mailto:nuvora.studio@outlook.com">nuvora.studio@outlook.com</a>
         </nav>
+        <nav className="footer-legal" aria-label="Información legal">
+          <Link href="/privacidad">Política de privacidad</Link>
+          <Link href="/aviso-legal">Aviso legal</Link>
+          <Link href="/cookies">Cookies</Link>
+        </nav>
         <p className="footer-meta">© {new Date().getFullYear()} Nuvora. Todos los derechos reservados.</p>
       </div>
     </footer>

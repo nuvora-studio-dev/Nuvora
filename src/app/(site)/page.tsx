@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { TextLink } from "@/components/ui/text-link";
+import { templateList } from "@/templates/registry";
 import { withBasePath } from "@/lib/base-path";
 
 export default function Home() {
@@ -11,13 +12,14 @@ export default function Home() {
         <Container className="hero-grid">
           <div className="hero-copy reveal">
             <p className="eyebrow">Estudio de diseño y desarrollo web</p>
-            <h1>Creamos webs que hacen que tu negocio se vea tan profesional como realmente es.</h1>
-            <p>Diseñamos y desarrollamos páginas web rápidas, modernas y orientadas a generar confianza, comunicar mejor y facilitar que tus visitantes den el siguiente paso.</p>
+            <h1>Una web a la altura de tu negocio.</h1>
+            <p>Diseño con identidad. Desarrollo a medida. Creamos webs que explican lo que haces y facilitan que tus visitantes den el siguiente paso.</p>
             <Link className="button" href="/contact">Cuéntanos tu proyecto</Link>
+            <div className="hero-actions"><TextLink href="/plantillas">Explora nuestros diseños</TextLink></div>
             <p className="hero-services">Diseño · Desarrollo · Optimización · Mantenimiento</p>
           </div>
           <figure className="hero-art reveal delay-one">
-            <Image src={withBasePath("/brand/nuvora-hero-art.png")} alt="Instalación abstracta de cintas azules inspirada en el gesto visual de Nuvora" fill priority sizes="(max-width: 767px) 100vw, 52vw" />
+            <Image src={withBasePath("/brand/nuvora-hero-art.webp")} alt="Instalación abstracta de cintas azules inspirada en el gesto visual de Nuvora" fill priority sizes="(max-width: 1023px) 100vw, 52vw" />
           </figure>
         </Container>
       </section>
@@ -65,14 +67,30 @@ export default function Home() {
         </Container>
       </section>
 
+      <section className="home-designs section-space view-reveal" aria-labelledby="home-designs-title">
+        <Container>
+          <div className="section-heading">
+            <h2 id="home-designs-title">El diseño se entiende mejor cuando lo ves.</h2>
+            <p>Tres sectores, tres identidades. Explora estas demos y comprueba cómo se sienten al navegar.</p>
+          </div>
+          <div className="home-demo-grid">
+            {templateList.map((template) => <article key={template.slug}>
+              <Link className="home-demo-preview" href={`/plantillas/${template.slug}/demo`} aria-label={`Explorar demo de ${template.name}`}>
+                <Image src={withBasePath(`/templates/previews/${template.slug}.jpg`)} alt={`Captura de la demo ${template.name} para ${template.category.toLowerCase()}`} width={1400} height={800} sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" />
+              </Link>
+              <div className="home-demo-info"><p>{template.category}</p><h3>{template.name}</h3><p>Concepto Nuvora · Demo interactiva</p><p>{template.tagline}</p><TextLink href={`/plantillas/${template.slug}/demo`}>Explorar demo<span className="sr-only"> de {template.name}</span></TextLink></div>
+            </article>)}
+          </div>
+        </Container>
+      </section>
       <section className="why-nuvora section-space view-reveal">
         <Container>
           <p className="eyebrow">Por qué Nuvora</p>
           <h2>Menos ruido. Más criterio.</h2>
           <div className="why-grid">
             <article><h3><span>01</span> Diseño con intención</h3><p>Cada decisión visual tiene una función. Diseñamos para comunicar, no para decorar.</p></article>
-            <article><h3><span>02</span> Desarrollo a medida</h3><p>Construimos sobre una base técnica sólida y adaptamos cada dirección visual a las necesidades del proyecto.</p></article>
-            <article><h3><span>03</span> Rendimiento desde el principio</h3><p>Velocidad, responsive, accesibilidad y SEO técnico forman parte del proyecto, no son extras posteriores.</p></article>
+            <article><h3><span>02</span> Desarrollo a medida</h3><p>Partimos de lo que necesita tu negocio para definir la estructura, el contenido y las funcionalidades de tu web.</p></article>
+            <article><h3><span>03</span> Decisiones compartidas</h3><p>Te explicamos las propuestas y sus motivos para que puedas decidir con criterio durante el proyecto.</p></article>
             <article><h3><span>04</span> Comunicación directa</h3><p>Hablas directamente con las personas que diseñan y desarrollan tu proyecto. Sin intermediarios.</p></article>
           </div>
         </Container>
@@ -87,21 +105,21 @@ export default function Home() {
           <ol className="method-flow">
             <li><strong>01 — Descubrir</strong><span>Entendemos tu negocio, tus objetivos, tus usuarios y lo que necesita conseguir la nueva web.</span></li>
             <li><strong>02 — Definir</strong><span>Organizamos contenido, estructura, dirección visual y funcionalidades antes de empezar a construir.</span></li>
-            <li><strong>03 — Diseñar y desarrollar</strong><span>Convertimos la dirección acordada en una experiencia responsive, rápida y cuidada hasta el detalle.</span></li>
-            <li><strong>04 — Lanzar y mejorar</strong><span>Revisamos rendimiento, accesibilidad, SEO técnico y funcionamiento antes de publicar.</span></li>
+            <li><strong>03 — Diseñar y desarrollar</strong><span>Damos forma a la dirección acordada y construimos las páginas y funcionalidades del proyecto.</span></li>
+            <li><strong>04 — Lanzar y mejorar</strong><span>Comprobamos la web antes de publicarla. Después del lanzamiento, podemos mantenerla y mejorarla según las necesidades de tu negocio.</span></li>
           </ol>
         </Container>
       </section>
 
-      <section className="standard section-space view-reveal">
+      <section className="standard section-space view-reveal" aria-labelledby="standard-title">
         <Container>
-          <h2>El estándar Nuvora.</h2>
-          <div className="why-grid">
-            <article><h3>Diseño responsive de verdad</h3><p>Cada interfaz se diseña para funcionar correctamente desde móvil hasta pantallas de escritorio, no simplemente para encogerse.</p></article>
-            <article><h3>Rendimiento desde el principio</h3><p>Optimizamos estructura, recursos e interacción para construir experiencias rápidas y estables.</p></article>
-            <article><h3>Accesibilidad</h3><p>Jerarquía semántica, navegación por teclado, estados de foco y contraste forman parte del desarrollo.</p></article>
-            <article><h3>SEO técnico</h3><p>Construimos una base preparada para buscadores mediante estructura semántica, metadata y buenas prácticas técnicas.</p></article>
-            <article><h3>Código mantenible</h3><p>Desarrollamos pensando también en lo que ocurrirá después del lanzamiento: mantenimiento, evolución y nuevas funcionalidades.</p></article>
+          <h2 id="standard-title">El estándar Nuvora.</h2>
+          <div className="service-list large compact-top">
+            <article className="service-row"><h3>Responsive</h3><p>Adaptamos la composición y la navegación a escritorio, tablet y móvil.</p></article>
+            <article className="service-row"><h3>Rendimiento</h3><p>Optimizamos imágenes, recursos y carga de las páginas para reducir esperas.</p></article>
+            <article className="service-row"><h3>Accesibilidad</h3><p>Cuidamos el contraste, la estructura semántica, la navegación por teclado y los estados de foco.</p></article>
+            <article className="service-row"><h3>SEO técnico</h3><p>Preparamos títulos, metadatos, URLs y estructura para facilitar la indexación.</p></article>
+            <article className="service-row"><h3>Mantenibilidad</h3><p>Organizamos el código para facilitar actualizaciones, correcciones y nuevas funcionalidades.</p></article>
           </div>
         </Container>
       </section>

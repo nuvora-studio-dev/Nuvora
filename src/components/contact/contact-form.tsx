@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState, useSyncExternalStore } from "react";
+import Link from "next/link";
 import { readDemoConfig, palettes } from "@/templates/personalization";
 import { getTemplate } from "@/templates/registry";
 
@@ -58,7 +59,7 @@ export function ContactForm() {
       message,
     ].join("\n");
     window.location.href = `mailto:nuvora.studio@outlook.com?subject=${encodeURIComponent(`Nuevo proyecto: ${project}`)}&body=${encodeURIComponent(body)}`;
-    setNotice("Se abrirá tu aplicación de correo. Revisa y envía el mensaje desde allí.");
+    setNotice("Email preparado. Si tienes una aplicación de correo configurada, podrás revisar y enviar el mensaje desde allí. El proyecto todavía no se ha enviado.");
   }
 
   return (
@@ -111,12 +112,12 @@ export function ContactForm() {
       </div>
       <label className="checkbox-field">
         <input type="checkbox" name="privacy" aria-invalid={Boolean(errors.privacy)} aria-describedby={errors.privacy ? "privacy-error" : undefined} />
-        <span>Acepto el tratamiento de estos datos para responder a mi solicitud.</span>
+        <span>Acepto el tratamiento de estos datos para responder a mi solicitud según la <Link href="/privacidad" className="privacy-link">Política de privacidad</Link>.</span>
       </label>
       {errors.privacy && <p className="field-error" id="privacy-error">{errors.privacy}</p>}
-      <p className="form-notice">Al continuar, se abrirá tu aplicación de correo para que revises y envíes el proyecto.</p>
+      <p className="form-notice">Prepararemos un email con tus datos para abrirlo en tu aplicación de correo. Necesitas tenerla configurada y enviar el mensaje desde allí.</p>
       <div className="form-actions">
-        <button className="button" type="submit">Enviar proyecto</button>
+        <button className="button" type="submit">Preparar email</button>
         {notice && <p className="form-notice" role="status">{notice}</p>}
       </div>
     </form>

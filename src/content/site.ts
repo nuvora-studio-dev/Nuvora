@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Nuvora",
   description: "Diseñamos y desarrollamos páginas web rápidas, modernas y a medida para negocios, profesionales y marcas.",
   nav: [
-    { href: "/plantillas", label: "Plantillas" },
+    { href: "/plantillas", label: "Demos" },
     { href: "/services", label: "Servicios" },
     { href: "/about", label: "Nosotros" },
   ],

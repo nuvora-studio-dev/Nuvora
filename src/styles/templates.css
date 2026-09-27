@@ -1,10 +1,9 @@
 .templates-intro { padding: clamp(6rem, 12vw, 11rem) 0 clamp(4rem, 7vw, 7rem); border-bottom: 1px solid var(--color-border); }
 .templates-intro h1 { max-width: 16ch; font-size: clamp(3rem, 6.2vw, 6rem); }
 .templates-intro .container > p:last-child { max-width: 43rem; margin: 2rem 0 0; color: var(--color-muted); font-size: 1.125rem; }
-.template-filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 3rem; }
-.template-filters button, .viewer-toolbar button { min-height: 2.75rem; padding: .55rem 1rem; border: 1px solid var(--color-border-strong); border-radius: 100px; color: var(--color-muted); background: transparent; cursor: pointer; transition: color var(--duration-fast), border-color var(--duration-fast), background var(--duration-fast); }
-.template-filters button:hover, .viewer-toolbar button:hover { color: var(--color-text); border-color: var(--color-text); }
-.template-filters button[aria-pressed="true"], .viewer-toolbar button[aria-pressed="true"] { color: var(--color-bg); background: var(--color-text); border-color: var(--color-text); }
+.viewer-toolbar button { min-height: 2.75rem; padding: .55rem 1rem; border: 1px solid var(--color-border-strong); border-radius: 100px; color: var(--color-muted); background: transparent; cursor: pointer; transition: color var(--duration-fast), border-color var(--duration-fast), background var(--duration-fast); }
+.viewer-toolbar button:hover { color: var(--color-text); border-color: var(--color-text); }
+.viewer-toolbar button[aria-pressed="true"] { color: var(--color-bg); background: var(--color-text); border-color: var(--color-text); }
 .template-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2.5rem, 5vw, 5rem) 1.5rem; }
 .template-card:first-child { grid-column: 1 / -1; }
 .template-card-media { position: relative; display: block; height: clamp(22rem, 42vw, 38rem); overflow: hidden; background: var(--color-surface); }
