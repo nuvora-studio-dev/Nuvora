@@ -71,14 +71,14 @@ export default function Home() {
         <Container>
           <div className="section-heading">
             <h2 id="home-designs-title">El diseño se entiende mejor cuando lo ves.</h2>
-            <p>Tres sectores, tres identidades. Explora estas demos y comprueba cómo se sienten al navegar.</p>
+            <p>Tres sectores, tres identidades. Explora las demos y prueba tu propia marca, colores y contenido en tiempo real.</p>
           </div>
           <div className="home-demo-grid">
             {templateList.map((template) => <article key={template.slug}>
-              <Link className="home-demo-preview" href={`/plantillas/${template.slug}/demo`} aria-label={`Explorar demo de ${template.name}`}>
+              <Link className="home-demo-preview" href={`/plantillas/${template.slug}`} aria-label={`Ver ${template.name}`}>
                 <Image src={withBasePath(`/templates/previews/${template.slug}.jpg`)} alt={`Captura de la demo ${template.name} para ${template.category.toLowerCase()}`} width={1400} height={800} sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" />
               </Link>
-              <div className="home-demo-info"><p>{template.category}</p><h3>{template.name}</h3><p>Concepto Nuvora · Demo interactiva</p><p>{template.tagline}</p><TextLink href={`/plantillas/${template.slug}/demo`}>Explorar demo<span className="sr-only"> de {template.name}</span></TextLink></div>
+              <div className="home-demo-info"><p>{template.category}</p><h3>{template.name}</h3><p>Concepto Nuvora · Demo interactiva</p><p>{template.tagline}</p><TextLink href={`/plantillas/${template.slug}`}>Ver {template.name}</TextLink></div>
             </article>)}
           </div>
         </Container>
