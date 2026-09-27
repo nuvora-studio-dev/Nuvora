@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
 
-export const metadata: Metadata = { title: { absolute: "Sobre Nuvora | Estudio de diseño y desarrollo web" }, description: "Conoce cómo trabajamos en Nuvora, un estudio independiente de diseño y desarrollo web." };
+export const metadata: Metadata = { title: { absolute: "Sobre Nuvora | Estudio de diseño y desarrollo web" }, description: "Conoce a Gabi y Alex, desarrolladores web de Nuvora, y nuestra forma de trabajar." };
 
 export default function AboutPage() {
   return (
@@ -14,6 +14,13 @@ export default function AboutPage() {
           <div className="about-copy">
             <p>Trabajamos directamente en cada proyecto desde la primera conversación hasta el lanzamiento. Esto nos permite entender mejor el problema, tomar decisiones más rápido y mantener coherencia entre lo que se diseña y lo que finalmente se construye.</p>
           </div>
+          <section className="about-principles" aria-labelledby="team-title">
+            <h2 id="team-title">Quiénes están detrás de Nuvora</h2>
+            <div className="why-grid">
+              <article><h3>Gabi</h3><p>Desarrollador web</p></article>
+              <article><h3>Alex</h3><p>Desarrollador web</p></article>
+            </div>
+          </section>
           <div className="about-principles">
             <h2>Nuestra forma de trabajar</h2>
             <div className="why-grid">
