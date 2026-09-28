@@ -1,7 +1,8 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from "react";
-import { palettes, readDemoConfig, contrastInk, readableAccent, type DemoConfig } from "@/templates/personalization";
+import Link from "next/link";
+import { palettes, readDemoConfig, demoQuery, contrastInk, readableAccent, type DemoConfig } from "@/templates/personalization";
 import type { TemplateSlug } from "@/templates/registry";
 
 const DemoContext = createContext<DemoConfig | null>(null);
@@ -25,7 +26,7 @@ export function DemoExperience({ slug, name, headline, children }: { slug: Templ
   const theme = palettes[slug][config.palette];
   const accent = config.accent || theme.accent;
   const style = { "--demo-bg": theme.background, "--demo-surface": theme.surface, "--demo-text": theme.text, "--demo-ink": theme.ink, "--demo-accent": accent, "--demo-readable-accent": readableAccent(accent, theme.background, theme.text), "--demo-accent-ink": contrastInk(accent) } as CSSProperties;
-  return <DemoContext.Provider value={config}><main id="contenido" className={`demo-site demo-${slug}`} style={style}>{children}</main></DemoContext.Provider>;
+  return <DemoContext.Provider value={config}><main id="contenido" className={`demo-site demo-${slug}`} style={style}>{children}<aside className="demo-nuvora-cta"><p>Demo conceptual creada por Nuvora · {name}</p><Link href={`/contact?template=${slug}&${demoQuery(config)}`}>Quiero una web como esta ↗</Link></aside></main></DemoContext.Provider>;
 }
 
 export function useDemoConfig() {

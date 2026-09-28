@@ -21,7 +21,7 @@ export default function LegalPage() {
       <h2>Objeto de la web</h2>
       <p>Esta web presenta los servicios de diseño, desarrollo, optimización y mantenimiento de Nuvora y permite preparar consultas por email. El envío de una consulta no formaliza una contratación.</p>
       <h2>Demos y contenido ilustrativo</h2>
-      <p>Atria, Pulse y Aura son conceptos de Nuvora y demos interactivas personalizables. No se presentan como proyectos de clientes. La fotografía y los testimonios de muestra son ilustrativos; las solicitudes de reserva o cita de las demos no constituyen confirmaciones reales.</p>
+      <p>Atria, Pulse y Aura son conceptos de Nuvora y demos interactivas personalizables. La fotografía es ilustrativa; las solicitudes de reserva o cita de las demos no constituyen confirmaciones reales.</p>
       <h2>Contenido y derechos</h2>
       <p>La disponibilidad de imágenes, textos y diseños en esta web no concede derechos para reutilizarlos. Los recursos de terceros mantienen las condiciones de sus respectivas licencias.</p>
       <h2>Privacidad y cookies</h2>

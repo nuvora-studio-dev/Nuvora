@@ -35,7 +35,7 @@ export const templates = {
     detailAlt: "Sesión de masaje en un estudio de bienestar",
     tags: ["Bienestar", "Tratamientos", "Citas"],
     pages: ["Inicio", "Tratamientos", "Estudio", "Citas"],
-    features: ["Listado de tratamientos", "Presentación del estudio", "Testimonios de muestra identificados", "Solicitud de cita"],
+    features: ["Listado de tratamientos", "Presentación del estudio", "Información sobre el equipo", "Solicitud de cita"],
     theme: "serenidad mineral", seoTitle: "Aura — diseño para bienestar",
   },
 } as const;

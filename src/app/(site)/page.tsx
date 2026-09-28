@@ -15,7 +15,7 @@ export default function Home() {
             <h1>Una web a la altura de tu negocio.</h1>
             <p>Diseño con identidad. Desarrollo a medida. Creamos webs que explican lo que haces y facilitan que tus visitantes den el siguiente paso.</p>
             <Link className="button" href="/contact">Cuéntanos tu proyecto</Link>
-            <div className="hero-actions"><TextLink href="/plantillas">Explora nuestros diseños</TextLink></div>
+            <div className="hero-actions"><TextLink href="/plantillas">Explora nuestras demos interactivas</TextLink></div>
             <p className="hero-services">Diseño · Desarrollo · Optimización · Mantenimiento</p>
           </div>
           <figure className="hero-art reveal delay-one">
@@ -70,8 +70,8 @@ export default function Home() {
       <section className="home-designs section-space view-reveal" aria-labelledby="home-designs-title">
         <Container>
           <div className="section-heading">
-            <h2 id="home-designs-title">El diseño se entiende mejor cuando lo ves.</h2>
-            <p>Tres sectores, tres identidades. Explora las demos y prueba tu propia marca, colores y contenido en tiempo real.</p>
+            <h2 id="home-designs-title">Descubre lo que podemos diseñar y desarrollar.</h2>
+            <p>Atria, Pulse y Aura son conceptos demostrativos para restauración, fitness y belleza. Explora las demos interactivas y prueba tu propia marca, colores y contenido en tiempo real.</p>
           </div>
           <div className="home-demo-grid">
             {templateList.map((template) => <article key={template.slug}>

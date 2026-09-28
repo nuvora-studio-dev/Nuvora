@@ -6,6 +6,9 @@
 .demo-wrap { width: min(calc(100% - 4rem), 1280px); margin-inline: auto; }
 .demo-site img { object-fit: cover; }
 .demo-mobile-nav { display: none; }
+.demo-nuvora-cta { display: grid; justify-items: center; gap: 1rem; padding: 3rem 1.5rem; text-align: center; color: #fff; background: #10141d; font: 500 1rem var(--font-body); }
+.demo-nuvora-cta p { margin: 0; }
+.demo-nuvora-cta a { display: inline-flex; align-items: center; min-height: 44px; padding: .75rem 1.25rem; color: #10141d; background: #fff; }
 
 /* Atria: dark editorial dining room. */
 .demo-atria { color: var(--demo-text); background: var(--demo-bg); font-family: Georgia, "Times New Roman", serif; }
@@ -140,16 +143,13 @@
 .aura-studio-copy { display: flex; flex-direction: column; align-items: start; justify-content: center; padding: clamp(3rem, 6vw, 8rem); }
 .aura-studio-copy h2 { max-width: 12ch; margin-top: 2rem; font-size: clamp(3.5rem, 5vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -.07em; }
 .aura-studio-copy p { max-width: 25rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
-.aura-voices { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding-block: clamp(6rem, 10vw, 10rem); border-top: 1px solid #b6beb3; }
+.aura-voices { padding-block: clamp(6rem, 10vw, 10rem); border-top: 1px solid #b6beb3; }
 .aura-voices h2 { max-width: 14ch; margin-top: 1.5rem; font-size: clamp(3rem, 5vw, 6rem); font-weight: 300; line-height: 1; letter-spacing: -.07em; }
 .aura-voices > div p { max-width: 27rem; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }
 .aura-voices ul { margin-top: 2rem; }
 .aura-voices li { display: grid; gap: .3rem; padding: 1rem 0; border-top: 1px solid #b6beb3; }
 .aura-voices li strong { font-weight: 650; }
 .aura-voices li span { color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); font-size: .9rem; }
-.aura-voices blockquote { margin: 0; padding: 2rem 0 0; border-top: 1px solid #b6beb3; }
-.aura-voices blockquote p { margin: 0 0 1.5rem; font-size: clamp(1.5rem, 2.5vw, 2.5rem); line-height: 1.3; }
-.aura-voices cite { color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); font-size: .78rem; font-style: normal; }
 .aura-close { padding-block: clamp(7rem, 12vw, 13rem); text-align: center; border-top: 1px solid #b6beb3; }
 .aura-close h2 { margin: 1.5rem 0; font-size: clamp(4rem, 7vw, 8rem); font-weight: 300; letter-spacing: -.07em; }
 .aura-close p { max-width: 30rem; margin: auto; color: color-mix(in srgb, var(--demo-text) 82%, var(--demo-bg)); }

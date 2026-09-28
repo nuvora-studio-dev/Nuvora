@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function TemplatesPage() {
   return <>
-    <section className="templates-intro"><Container><p className="eyebrow">Diseños base de Nuvora</p><h1>Una dirección clara para empezar algo propio.</h1><p>Explora experiencias diseñadas para sectores concretos. Cada una es un punto de partida: adaptamos contenido, identidad y funcionalidades a la realidad de tu proyecto.</p></Container></section>
+    <section className="templates-intro"><Container><p className="eyebrow">Demos interactivas de Nuvora</p><h1>Una dirección clara para empezar algo propio.</h1><p>Atria, Pulse y Aura son conceptos demostrativos para restauración, fitness y belleza. Puedes recorrer cada demo y personalizarla como punto de partida para tu proyecto.</p></Container></section>
     <section className="section-space compact-top"><Container><TemplateCatalog /></Container></section>
   </>;
 }

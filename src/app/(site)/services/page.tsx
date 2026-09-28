@@ -5,13 +5,13 @@ import { Container } from "@/components/layout/container";
 
 export const metadata: Metadata = {
   title: { absolute: "Servicios de diseño y desarrollo web | Nuvora" },
-  description: "Diseño web, desarrollo, landing pages, rediseño, optimización y mantenimiento de páginas web.",
+  description: "Diseño y desarrollo web, rediseño y optimización, y mantenimiento y evolución de páginas web.",
 };
 
 export default function ServicesPage() {
   return (
     <>
-      <PageIntro eyebrow="Servicios" title="Todo lo necesario para construir una presencia digital profesional." description="Desde una landing page hasta una web corporativa completa. Diseñamos y desarrollamos cada proyecto en función de sus objetivos, con una dirección visual propia o una base adaptable." />
+      <PageIntro eyebrow="Servicios" title="Tres formas de hacer que tu web funcione mejor." description="Diseñamos una web nueva, mejoramos la que ya tienes o la mantenemos al día. Definimos cada proyecto según lo que necesita tu negocio." />
       <section className="section-space compact-top">
         <Container>
           <div className="service-list large">
@@ -33,15 +33,7 @@ export default function ServicesPage() {
               </div>
             </article>
             <article className="service-row">
-              <h2>Landing pages</h2>
-              <div>
-                <p>Páginas enfocadas en presentar una oferta concreta y conseguir una acción: contactar, reservar, solicitar información o comprar.</p>
-                <p className="service-detail-label">Ideal para:</p>
-                <p className="service-types">Campañas · Lanzamientos · Servicios · Captación de leads</p>
-              </div>
-            </article>
-            <article className="service-row">
-              <h2>Rediseño web</h2>
+              <h2>Rediseño y optimización</h2>
               <div>
                 <p>Replanteamos webs que han quedado desactualizadas visual, técnica o estratégicamente.</p>
                 <p className="service-detail-label">Trabajamos sobre:</p>

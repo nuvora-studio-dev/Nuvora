@@ -78,13 +78,12 @@ export function ContactForm() {
         <input id="company" name="company" placeholder="Nombre de tu empresa" autoComplete="organization" />
       </FormField>
       <FormField id="project" label="¿Qué necesitas?" error={errors.project}>
-        <select id="project" name="project" defaultValue="" aria-invalid={Boolean(errors.project)} aria-describedby={errors.project ? "project-error" : undefined}>
+        <select id="project" name="project" key={template} defaultValue={template ? "Web basada en dirección visual" : ""} aria-invalid={Boolean(errors.project)} aria-describedby={errors.project ? "project-error" : undefined}>
           <option value="" disabled>Selecciona una opción</option>
           {template && <option value="Web basada en dirección visual" >Web basada en dirección visual</option>}
-          <option>Nueva página web</option>
-          <option>Rediseñar mi web</option>
-          <option>Landing page</option>
-          <option>Mantenimiento / mejoras</option>
+          <option>Diseño y desarrollo web</option>
+          <option>Rediseño y optimización</option>
+          <option>Mantenimiento y evolución</option>
           <option>Otro</option>
         </select>
       </FormField>
