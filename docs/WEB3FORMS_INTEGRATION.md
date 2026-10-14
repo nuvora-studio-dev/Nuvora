@@ -28,6 +28,8 @@ Navegador local: selección de Atria conservada, validación de campos, estado a
 
 Los scripts de contacto y plantillas emiten el aviso preexistente de Node `MODULE_TYPELESS_PACKAGE_JSON`, sin fallar. No se ha cambiado el modo de módulos del proyecto para resolver ese aviso.
 
+Validación remota del commit de implementación `c8628fab26a01d23919728ed4134e75e9ac796ec`: [GitHub Actions](https://github.com/nuvora-studio-dev/Nuvora/actions/runs/38616404511) SUCCESS en Linux, Node **22.23.3**; ejecuta las seis comprobaciones anteriores. Cloudflare Pages también informa SUCCESS para la preview automática de esta rama. Estos resultados acreditan build y pruebas simuladas, no la entrega real del correo. PR de revisión: [#2](https://github.com/nuvora-studio-dev/Nuvora/pull/2), abierta en borrador.
+
 ## Cloudflare Pages
 
 Se ha observado el nombre `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` en las variables de producción del proyecto `nuvora-studio`. No se ha copiado, mostrado ni modificado su valor. Su presencia no acredita que sea una clave válida ni que entregue al buzón correcto. No existe `.env.local` en este checkout.
