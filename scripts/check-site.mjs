@@ -4,6 +4,12 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const root = path.resolve("out");
+const verificationFile = "google8c02900557f9e75d.html";
+assert.equal(
+  (await readFile(path.join(root, verificationFile), "utf8")).trim(),
+  `google-site-verification: ${verificationFile}`,
+  "Google verification file is exported with its original content",
+);
 const preview = process.argv.includes("--preview");
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const origin = new URL(
@@ -71,7 +77,7 @@ else assert.ok(robots.includes(`Sitemap: ${origin}${basePath}/sitemap.xml`));
 async function htmlFiles(dir) {
   const files = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
-    if (entry.name === "_next") continue;
+    if (entry.name === "_next" || (dir === root && entry.name === verificationFile)) continue;
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) files.push(...(await htmlFiles(file)));
     else if (entry.name.endsWith(".html")) files.push(file);
