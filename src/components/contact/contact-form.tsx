@@ -1,13 +1,13 @@
 "use client";
 
-import { type FormEvent, type ReactNode, useState } from "react";
+import { type FormEvent, type ReactNode, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { readDemoConfig, palettes } from "@/templates/personalization";
 import { getTemplate } from "@/templates/registry";
 import { services } from "@/content/services";
 import { siteConfig } from "@/content/site";
-import { validateContact, type ContactErrors } from "@/lib/contact";
+import { submitContact, validateContact, type ContactErrors } from "@/lib/contact";
 
 const allowedServices = [
   ...services.map((service) => service.slug),
@@ -23,6 +23,8 @@ export function ContactFormWithQuery() {
 export function ContactForm({ search = "" }: { search?: string }) {
   const [errors, setErrors] = useState<ContactErrors>({});
   const [notice, setNotice] = useState("");
+  const [sending, setSending] = useState(false);
+  const pending = useRef(false);
   const params = new URLSearchParams(search);
   const selected = getTemplate(params.get("template") ?? "");
   const configuration = selected
@@ -38,13 +40,15 @@ export function ContactForm({ search = "" }: { search?: string }) {
       ? "concepto-web"
       : "";
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    if (pending.current) return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
     const nextErrors = validateContact(data, allowedServices);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
-      setNotice("Revisa los campos indicados antes de preparar el email.");
+      setNotice("Revisa los campos indicados antes de enviar el mensaje.");
       event.currentTarget
         .querySelector<HTMLElement>(`[name="${Object.keys(nextErrors)[0]}"]`)
         ?.focus();
@@ -77,10 +81,22 @@ export function ContactForm({ search = "" }: { search?: string }) {
       "",
       value("message"),
     ].join("\n");
-    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(`Proyecto web: ${service}`)}&body=${encodeURIComponent(body)}`;
-    setNotice(
-      "Email preparado. Revisa y envía el mensaje desde tu aplicación de correo. Todavía no se ha enviado. Si no se abre, puedes escribirnos directamente al email indicado.",
-    );
+    data.set("subject", `Proyecto web: ${service}`);
+    data.set("service", service);
+    data.set("message", body);
+    pending.current = true;
+    setSending(true);
+    setNotice("Enviando tu mensaje…");
+    try {
+      await submitContact(data, process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "");
+      form.reset();
+      setNotice("Hemos recibido tu mensaje. Nuvora revisará tu solicitud.");
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "No se ha podido enviar el mensaje. Escríbenos por email.");
+    } finally {
+      pending.current = false;
+      setSending(false);
+    }
   }
 
   return (
@@ -91,7 +107,9 @@ export function ContactForm({ search = "" }: { search?: string }) {
           <p>Tu configuración se incluirá como contexto en el email.</p>
         </div>
       )}
-      <form className="contact-form" onSubmit={handleSubmit} noValidate>
+      <form className="contact-form" onSubmit={handleSubmit} noValidate aria-busy={sending}>
+        <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} aria-hidden="true" autoComplete="off" />
+        <fieldset disabled={sending} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: "contents" }}>
         {Object.keys(errors).length > 0 && (
           <div className="error-summary">
             <p>Revisa estos campos:</p>
@@ -233,14 +251,14 @@ export function ContactForm({ search = "" }: { search?: string }) {
           )}
         </div>
         <p className="form-notice">
-          Prepararemos un email con estos datos. Necesitas una aplicación de
-          correo configurada y enviarlo desde allí.
+          Enviaremos tu consulta a Nuvora mediante Web3Forms para valorar tu proyecto.
         </p>
         <div className="form-actions">
-          <button className="button" type="submit">
-            Preparar email →
+          <button className="button" type="submit" disabled={sending}>
+            {sending ? "Enviando…" : "Enviar mensaje →"}
           </button>
         </div>
+        </fieldset>
         <p
           className="form-notice"
           role="status"
@@ -251,7 +269,7 @@ export function ContactForm({ search = "" }: { search?: string }) {
         </p>
         <noscript>
           <p>
-            Para preparar el email con este formulario necesitas JavaScript.
+            Para enviar este formulario necesitas JavaScript.
             Puedes escribir directamente a{" "}
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
