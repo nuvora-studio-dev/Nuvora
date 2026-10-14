@@ -29,7 +29,7 @@ Abrir `http://localhost:3101`. Este servidor no reproduce redirects ni headers d
 
 ## Entornos e indexación
 
-El origen público por defecto es `https://nuvora-studio.pages.dev`; `NEXT_PUBLIC_SITE_URL` permite establecer el origen canónico. Debe ser http(s), sin credenciales. Un build indexable rechaza localhost. El subdirectorio lo define `NEXT_PUBLIC_BASE_PATH`, no el pathname de la URL de origen.
+El origen público por defecto es `https://nuvora-studio.pages.dev`; `NEXT_PUBLIC_SITE_URL` permite establecer el origen canónico. Debe ser un origen sin credenciales, ruta, query ni fragmento. Todo build de producción, incluidas las previews noindex, requiere HTTPS y rechaza localhost y loopback. Para servir `out` localmente conserva ese origen público: las canonicals no deben apuntar al servidor local. El subdirectorio lo define `NEXT_PUBLIC_BASE_PATH`, no el pathname de la URL de origen.
 
 `.env.example` configura una preview no indexable. Copiarlo a `.env.local` solo si necesitas esos valores; antes de una publicación autorizada establecer `NEXT_PUBLIC_SITE_INDEXABLE=true` o retirar el override falso. En desarrollo, y en ramas Cloudflare distintas de `main`, las páginas corporativas son noindex. Confirmar la rama de producción real antes de publicar; no se han modificado las variables remotas.
 
@@ -43,7 +43,9 @@ pnpm test:templates --preview
 Remove-Item Env:NEXT_PUBLIC_SITE_INDEXABLE
 ```
 
-El build de preview omite entradas del sitemap. Las demos son siempre noindex. Las rutas antiguas `/services`, `/about` y `/contact` conservan una página estática de compatibilidad, con canonical español y noindex. `public/_redirects` prepara sus 301 para Cloudflare; comprobar allí la conservación de parámetros antes de publicar.
+El build de preview omite entradas del sitemap. Robots permite rastrear recursos y páginas también en previews para que los buscadores puedan leer su noindex. Las demos son siempre noindex. Las rutas antiguas `/services`, `/about` y `/contact` conservan una página estática de compatibilidad, con canonical español y noindex. `public/_redirects` prepara sus 301 para Cloudflare; comprobar allí la conservación de parámetros antes de publicar.
+
+La base SEO técnica y sus resultados se documentan en [SEO fase 1](docs/SEO_AUDIT_PHASE_1.md). `src/content/site.ts` centraliza URLs absolutas; `src/lib/metadata.ts` compone canonical, Open Graph y Twitter por página. La portada incluye un único JSON-LD de Organization y WebSite con datos del proyecto. `pnpm test:site` verifica el HTML exportado y el rechazo de orígenes inválidos. El build copia los payloads de prefetch anidados que Next 16.3.8 genera en Windows a las URLs planas que solicita el navegador; conserva los originales y no modifica payloads. En un export que ya usa nombres planos, este paso no copia archivos.
 
 ## Contenido, marca y contacto
 
