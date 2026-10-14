@@ -8,7 +8,7 @@
 
 **Stack:** React, TypeScript estricto, CSS nativo, pnpm y ESLint existentes. Sin CMS, framework CSS, librería de motion o migración de hosting.
 
-Diagnóstico y evidencia: [auditoría del 14 de octubre](../audits/2026-10-14/AUDITORIA.md). Estado: **planned**; únicamente auditoría y documentación implementadas.
+Diagnóstico y evidencia: [auditoría del 14 de octubre](../audits/2026-10-14/AUDITORIA.md). Tras la autorización «Aplica todo lo que veas necesario», la web está **implemented** localmente; el contacto por backend, los datos legales y la aprobación de producción permanecen **partial/pending**. Evidencia y alcance de cierre: [validación del rediseño](../audits/2026-10-14-redesign/VALIDACION.md).
 
 ## Dirección creativa: criterio visible
 

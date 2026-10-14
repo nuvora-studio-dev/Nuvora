@@ -1,0 +1,90 @@
+[
+  {
+    "route": "/",
+    "status": 200
+  },
+  {
+    "route": "/servicios/",
+    "status": 200
+  },
+  {
+    "route": "/servicios/diseno-desarrollo-web/",
+    "status": 200
+  },
+  {
+    "route": "/servicios/rediseno-web/",
+    "status": 200
+  },
+  {
+    "route": "/servicios/mantenimiento-web/",
+    "status": 200
+  },
+  {
+    "route": "/proyectos/",
+    "status": 200
+  },
+  {
+    "route": "/proyectos/atria/",
+    "status": 200
+  },
+  {
+    "route": "/proyectos/pulse/",
+    "status": 200
+  },
+  {
+    "route": "/proyectos/aura/",
+    "status": 200
+  },
+  {
+    "route": "/estudio/",
+    "status": 200
+  },
+  {
+    "route": "/proceso/",
+    "status": 200
+  },
+  {
+    "route": "/contacto/",
+    "status": 200
+  },
+  {
+    "route": "/plantillas/",
+    "status": 200
+  },
+  {
+    "route": "/plantillas/atria/",
+    "status": 200
+  },
+  {
+    "route": "/plantillas/pulse/",
+    "status": 200
+  },
+  {
+    "route": "/plantillas/aura/",
+    "status": 200
+  },
+  {
+    "route": "/plantillas/atria/demo/",
+    "status": 200
+  },
+  {
+    "route": "/plantillas/pulse/demo/",
+    "status": 200
+  },
+  {
+    "route": "/plantillas/aura/demo/",
+    "status": 200
+  },
+  {
+    "route": "/aviso-legal/",
+    "status": 200
+  },
+  {
+    "route": "/privacidad/",
+    "status": 200
+  },
+  {
+    "route": "/cookies/",
+    "status": 200
+  }
+]
