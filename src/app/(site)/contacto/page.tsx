@@ -41,9 +41,7 @@ export default function ContactPage() {
               {siteConfig.email}
             </a>
             <p className="form-notice">
-              El formulario prepara un email para que lo revises y lo envíes
-              desde tu aplicación de correo. No envía datos a un servidor de
-              Nuvora.
+              El formulario envía tu consulta mediante Web3Forms. También puedes escribirnos directamente por email.
             </p>
           </div>
           <Suspense fallback={<ContactForm />}>
