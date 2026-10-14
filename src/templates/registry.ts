@@ -4,7 +4,7 @@ export const templates = {
     headline: "El placer de estar aquí.",
     tagline: "Una mesa que merece tiempo.",
     description: "Dirección editorial para restaurantes que convierten la cocina, el espacio y la hospitalidad en una experiencia propia.",
-    cover: "/templates/atria.jpg", detailImage: "/templates/atria_space.jpg",
+    cover: "/templates/atria.webp", detailImage: "/templates/atria_space.webp",
     coverAlt: "Mesa de restaurante preparada para una experiencia gastronómica",
     detailAlt: "Comedor contemporáneo dispuesto para recibir comensales",
     tags: ["Editorial", "Gastronomía", "Reservas"],
@@ -17,7 +17,7 @@ export const templates = {
     headline: "Más fuerte. Cada día.",
     tagline: "Entrena con intención.",
     description: "Una presencia directa y enérgica para espacios de entrenamiento con método, comunidad y una propuesta clara.",
-    cover: "/templates/pulse.jpg", detailImage: "/templates/pulse_train.jpg",
+    cover: "/templates/pulse.webp", detailImage: "/templates/pulse_train.webp",
     coverAlt: "Sala de entrenamiento equipada para sesiones de fuerza",
     detailAlt: "Entrenamiento de fuerza en gimnasio",
     tags: ["Energía", "Clases", "Inscripciones"],
@@ -30,7 +30,7 @@ export const templates = {
     headline: "Sentirse bien se nota.",
     tagline: "El cuidado tiene su espacio.",
     description: "Una experiencia serena para estudios de bienestar y estética que quieren mostrar su criterio, sus tratamientos y su espacio.",
-    cover: "/templates/aura.jpg", detailImage: "/templates/aura_space.jpg",
+    cover: "/templates/aura.webp", detailImage: "/templates/aura_space.webp",
     coverAlt: "Tratamiento facial aplicado en un estudio de belleza",
     detailAlt: "Sesión de masaje en un estudio de bienestar",
     tags: ["Bienestar", "Tratamientos", "Citas"],
@@ -44,5 +44,5 @@ export type TemplateSlug = keyof typeof templates;
 export const templateList = Object.values(templates).sort((a, b) => a.order - b.order);
 
 export function getTemplate(slug: string) {
-  return templates[slug as TemplateSlug];
+  return templateList.find(template => template.slug === slug);
 }

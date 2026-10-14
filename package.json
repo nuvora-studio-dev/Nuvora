@@ -5,15 +5,15 @@
   "packageManager": "pnpm@11.19.0",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && node scripts/normalize-static-export.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:templates": "node scripts/check-templates.mjs"
+    "test:templates": "node scripts/check-templates.mjs",
+    "test:contact": "node scripts/check-contact.mjs",
+    "test:site": "node scripts/check-site.mjs"
   },
   "dependencies": {
-    "geist": "^1.7.2",
-    "next": "16.3.4",
+    "next": "16.3.8",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
@@ -22,7 +22,7 @@
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "eslint": "^9.35.0",
-    "eslint-config-next": "16.3.4",
+    "eslint-config-next": "16.3.8",
     "typescript": "^5.9.2"
   }
 }

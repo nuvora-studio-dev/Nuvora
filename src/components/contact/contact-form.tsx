@@ -1,135 +1,286 @@
 "use client";
 
-import { FormEvent, useState, useSyncExternalStore } from "react";
+import { type FormEvent, type ReactNode, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { readDemoConfig, palettes } from "@/templates/personalization";
 import { getTemplate } from "@/templates/registry";
+import { services } from "@/content/services";
+import { siteConfig } from "@/content/site";
+import { validateContact, type ContactErrors } from "@/lib/contact";
 
-type FieldErrors = Partial<Record<"name" | "email" | "project" | "message" | "privacy", string>>;
+const allowedServices = [
+  ...services.map((service) => service.slug),
+  "concepto-web",
+  "otro",
+];
 
-export function ContactForm() {
-  const [errors, setErrors] = useState<FieldErrors>({});
+export function ContactFormWithQuery() {
+  const params = useSearchParams();
+  return <ContactForm search={params.toString()} />;
+}
+
+export function ContactForm({ search = "" }: { search?: string }) {
+  const [errors, setErrors] = useState<ContactErrors>({});
   const [notice, setNotice] = useState("");
-  const search = useSyncExternalStore(() => () => {}, () => window.location.search, () => "");
   const params = new URLSearchParams(search);
   const selected = getTemplate(params.get("template") ?? "");
-  const template = selected?.name ?? "";
-  const configuration = selected ? readDemoConfig(params, { business: selected.name, headline: selected.headline }) : null;
-
+  const configuration = selected
+    ? readDemoConfig(params, {
+        business: selected.name,
+        headline: selected.headline,
+      })
+    : null;
+  const requestedService = params.get("servicio") ?? "";
+  const defaultService = allowedServices.includes(requestedService)
+    ? requestedService
+    : selected
+      ? "concepto-web"
+      : "";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const nextErrors: FieldErrors = {};
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const project = String(data.get("project") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim();
-
-    if (name.length < 2) nextErrors.name = "Indica tu nombre.";
-    if (!/^\S+@\S+\.\S+$/.test(email)) nextErrors.email = "Introduce un email válido.";
-    if (!project) nextErrors.project = "Selecciona el tipo de proyecto.";
-    if (message.length < 20) nextErrors.message = "Cuéntanos un poco más, al menos 20 caracteres.";
-    if (data.get("privacy") !== "on") nextErrors.privacy = "Necesitamos tu consentimiento para continuar.";
-
+    const nextErrors = validateContact(data, allowedServices);
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
-      setNotice("Revisa los campos indicados.");
+    if (Object.keys(nextErrors).length) {
+      setNotice("Revisa los campos indicados antes de preparar el email.");
+      event.currentTarget
+        .querySelector<HTMLElement>(`[name="${Object.keys(nextErrors)[0]}"]`)
+        ?.focus();
       return;
     }
-
+    const value = (key: string) => String(data.get(key) ?? "").trim();
+    const service =
+      services.find((service) => service.slug === value("service"))?.name ??
+      (value("service") === "concepto-web"
+        ? "Una web a partir de un concepto"
+        : "Otro proyecto");
     const body = [
-      `Nombre: ${name}`,
-      `Email: ${email}`,
-      `Empresa o proyecto: ${String(data.get("company") ?? "").trim()}`,
-      `Qué necesitas: ${project}`,
-      ...(selected && configuration ? [
-        `Dirección visual de partida: ${template}`,
-        `Marca en la demo: ${configuration.business}`,
-        `Titular: ${configuration.headline}`,
-        `Paleta: ${palettes[selected.slug][configuration.palette].name}`,
-        `Acento: ${configuration.accent || palettes[selected.slug][configuration.palette].accent}`,
-        `Contacto del negocio: ${configuration.email} ${configuration.phone}`,
-        `Ubicación: ${configuration.location}`,
-        `Sección adicional: ${configuration.showDetails ? "visible" : "oculta"}`,
-      ] : []),
-      `Presupuesto aproximado: ${String(data.get("budget") ?? "")}`,
-      `Cuándo te gustaría tenerlo: ${String(data.get("timeline") ?? "")}`,
+      `Nombre: ${value("name")}`,
+      `Empresa: ${value("company") || "No indicada"}`,
+      `Email: ${value("email")}`,
+      `Servicio: ${service}`,
+      `Web actual: ${value("website") || "No indicada"}`,
+      ...(selected && configuration
+        ? [
+            `Concepto de partida: ${selected.name}`,
+            `Marca: ${configuration.business}`,
+            `Titular: ${configuration.headline}`,
+            `Paleta: ${palettes[selected.slug][configuration.palette].name}`,
+            `Acento: ${configuration.accent || palettes[selected.slug][configuration.palette].accent}`,
+            `Contacto de la demo: ${configuration.email} ${configuration.phone}`,
+            `Ubicación: ${configuration.location}`,
+            `Sección adicional: ${configuration.showDetails ? "visible" : "oculta"}`,
+          ]
+        : []),
       "",
-      message,
+      value("message"),
     ].join("\n");
-    window.location.href = `mailto:nuvora.studio@outlook.com?subject=${encodeURIComponent(`Nuevo proyecto: ${project}`)}&body=${encodeURIComponent(body)}`;
-    setNotice("Email preparado. Si tienes una aplicación de correo configurada, podrás revisar y enviar el mensaje desde allí. El proyecto todavía no se ha enviado.");
+    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(`Proyecto web: ${service}`)}&body=${encodeURIComponent(body)}`;
+    setNotice(
+      "Email preparado. Revisa y envía el mensaje desde tu aplicación de correo. Todavía no se ha enviado. Si no se abre, puedes escribirnos directamente al email indicado.",
+    );
   }
 
   return (
-    <>
-    {template && <div className="contact-template-context"><strong>Partimos de {template}</strong><p>Incluiremos tu configuración de marca, colores y contenido como contexto de tu consulta.</p></div>}
-    <form className="contact-form" onSubmit={handleSubmit} noValidate>
-      <div className="field-grid">
-        <FormField id="name" label="Nombre" error={errors.name}>
-          <input id="name" name="name" placeholder="Tu nombre" autoComplete="name" aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} />
-        </FormField>
+    <div>
+      {selected && (
+        <div className="contact-template-context">
+          <strong>Partimos de {selected.name}</strong>
+          <p>Tu configuración se incluirá como contexto en el email.</p>
+        </div>
+      )}
+      <form className="contact-form" onSubmit={handleSubmit} noValidate>
+        {Object.keys(errors).length > 0 && (
+          <div className="error-summary">
+            <p>Revisa estos campos:</p>
+            <ul>
+              {Object.entries(errors).map(([field, error]) => (
+                <li key={field}>
+                  <a href={`#${field}`}>{error}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className="field-grid">
+          <FormField id="name" label="Nombre" error={errors.name}>
+            <input
+              id="name"
+              name="name"
+              autoComplete="name"
+              required
+              maxLength={100}
+              aria-invalid={Boolean(errors.name)}
+              aria-describedby={errors.name ? "name-error" : undefined}
+            />
+          </FormField>
+          <FormField
+            id="company"
+            label="Empresa (opcional)"
+            error={errors.company}
+          >
+            <input
+              id="company"
+              name="company"
+              autoComplete="organization"
+              maxLength={150}
+              aria-invalid={Boolean(errors.company)}
+              aria-describedby={errors.company ? "company-error" : undefined}
+            />
+          </FormField>
+        </div>
         <FormField id="email" label="Email" error={errors.email}>
-          <input id="email" name="email" type="email" placeholder="tu@email.com" autoComplete="email" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            maxLength={150}
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? "email-error" : undefined}
+          />
         </FormField>
-      </div>
-      <FormField id="company" label="Empresa o proyecto">
-        <input id="company" name="company" placeholder="Nombre de tu empresa" autoComplete="organization" />
-      </FormField>
-      <FormField id="project" label="¿Qué necesitas?" error={errors.project}>
-        <select id="project" name="project" key={template} defaultValue={template ? "Web basada en dirección visual" : ""} aria-invalid={Boolean(errors.project)} aria-describedby={errors.project ? "project-error" : undefined}>
-          <option value="" disabled>Selecciona una opción</option>
-          {template && <option value="Web basada en dirección visual" >Web basada en dirección visual</option>}
-          <option>Diseño y desarrollo web</option>
-          <option>Rediseño y optimización</option>
-          <option>Mantenimiento y evolución</option>
-          <option>Otro</option>
-        </select>
-      </FormField>
-      <FormField id="message" label="Cuéntanos sobre el proyecto" error={errors.message}>
-        <textarea id="message" name="message" rows={6} placeholder="Qué haces, qué necesitas, qué quieres mejorar y cualquier información que consideres importante." aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} />
-      </FormField>
-      <div className="field-grid">
-        <FormField id="budget" label="Presupuesto aproximado">
-          <select id="budget" name="budget" defaultValue="Todavía no lo sé">
-            <option>Todavía no lo sé</option>
-            <option>Menos de 500 €</option>
-            <option>500–1.000 €</option>
-            <option>1.000–2.500 €</option>
-            <option>Más de 2.500 €</option>
+        <FormField
+          id="service"
+          label="Servicio de interés"
+          error={errors.service}
+        >
+          <select
+            id="service"
+            name="service"
+            key={defaultService}
+            defaultValue={defaultService}
+            required
+            aria-invalid={Boolean(errors.service)}
+            aria-describedby={errors.service ? "service-error" : undefined}
+          >
+            <option value="" disabled>
+              Selecciona una opción
+            </option>
+            {services.map((service) => (
+              <option key={service.slug} value={service.slug}>
+                {service.name}
+              </option>
+            ))}
+            <option value="concepto-web">
+              Una web a partir de un concepto
+            </option>
+            <option value="otro">Todavía no lo tengo claro</option>
           </select>
         </FormField>
-        <FormField id="timeline" label="¿Cuándo te gustaría tenerlo?">
-          <select id="timeline" name="timeline" defaultValue="Sin fecha definida">
-            <option>Lo antes posible</option>
-            <option>1 mes</option>
-            <option>1–3 meses</option>
-            <option>Sin fecha definida</option>
-          </select>
+        <FormField
+          id="website"
+          label="Web actual (opcional)"
+          error={errors.website}
+        >
+          <input
+            id="website"
+            name="website"
+            type="url"
+            inputMode="url"
+            autoComplete="url"
+            placeholder="https://tuempresa.es"
+            maxLength={500}
+            aria-invalid={Boolean(errors.website)}
+            aria-describedby={errors.website ? "website-error" : undefined}
+          />
         </FormField>
-      </div>
-      <label className="checkbox-field">
-        <input type="checkbox" name="privacy" aria-invalid={Boolean(errors.privacy)} aria-describedby={errors.privacy ? "privacy-error" : undefined} />
-        <span>Acepto el tratamiento de estos datos para responder a mi solicitud según la <Link href="/privacidad" className="privacy-link">Política de privacidad</Link>.</span>
-      </label>
-      {errors.privacy && <p className="field-error" id="privacy-error">{errors.privacy}</p>}
-      <p className="form-notice">Prepararemos un email con tus datos para abrirlo en tu aplicación de correo. Necesitas tenerla configurada y enviar el mensaje desde allí.</p>
-      <div className="form-actions">
-        <button className="button" type="submit">Preparar email</button>
-        {notice && <p className="form-notice" role="status">{notice}</p>}
-      </div>
-    </form>
-    </>
+        <FormField
+          id="message"
+          label="Cuéntanos sobre el proyecto"
+          error={errors.message}
+        >
+          <textarea
+            id="message"
+            name="message"
+            rows={6}
+            required
+            minLength={20}
+            maxLength={1500}
+            aria-invalid={Boolean(errors.message)}
+            aria-describedby={`message-hint${errors.message ? " message-error" : ""}`}
+          />
+          <p id="message-hint" className="field-hint">
+            Qué hace tu negocio y qué te gustaría construir o mejorar. Entre 20
+            y 1.500 caracteres.
+          </p>
+        </FormField>
+        <div>
+          <label className="checkbox-field">
+            <input
+              id="privacy"
+              type="checkbox"
+              name="privacy"
+              required
+              aria-invalid={Boolean(errors.privacy)}
+              aria-describedby={errors.privacy ? "privacy-error" : undefined}
+            />
+            <span>
+              He leído la{" "}
+              <Link href="/privacidad" className="privacy-link">
+                información sobre privacidad
+              </Link>{" "}
+              para esta consulta.
+            </span>
+          </label>
+          {errors.privacy && (
+            <p className="field-error" id="privacy-error">
+              {errors.privacy}
+            </p>
+          )}
+        </div>
+        <p className="form-notice">
+          Prepararemos un email con estos datos. Necesitas una aplicación de
+          correo configurada y enviarlo desde allí.
+        </p>
+        <div className="form-actions">
+          <button className="button" type="submit">
+            Preparar email →
+          </button>
+        </div>
+        <p
+          className="form-notice"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {notice}
+        </p>
+        <noscript>
+          <p>
+            Para preparar el email con este formulario necesitas JavaScript.
+            Puedes escribir directamente a{" "}
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+          </p>
+        </noscript>
+      </form>
+    </div>
   );
 }
 
-function FormField({ id, label, error, children }: { id: string; label: string; error?: string; children: React.ReactNode }) {
+function FormField({
+  id,
+  label,
+  error,
+  children,
+}: {
+  id: string;
+  label: string;
+  error?: string;
+  children: ReactNode;
+}) {
   return (
     <div className="form-field">
       <label htmlFor={id}>{label}</label>
       {children}
-      {error && <p className="field-error" id={`${id}-error`}>{error}</p>}
+      {error && (
+        <p className="field-error" id={`${id}-error`}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }

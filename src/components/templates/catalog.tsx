@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { TemplateImage as Image } from "@/components/templates/template-image";
 import Link from "next/link";
 import { templateList } from "@/templates/registry";
 import { withBasePath } from "@/lib/base-path";
