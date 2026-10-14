@@ -24,7 +24,8 @@ export const metadata: Metadata = {
     title: "Nuvora — Diseño y desarrollo web",
     description: siteConfig.description,
   },
-  robots: { index: siteConfig.indexable, follow: siteConfig.indexable },
+  // Public pages opt in individually; the automatic 404 must never inherit index.
+  robots: siteConfig.indexable ? undefined : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

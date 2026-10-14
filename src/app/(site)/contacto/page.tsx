@@ -7,14 +7,13 @@ import {
   ContactFormWithQuery,
 } from "@/components/contact/contact-form";
 import { siteConfig } from "@/content/site";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Cuéntanos tu proyecto",
-  description:
-    "¿Necesitas una web nueva, renovar la actual o mantenerla al día? Cuéntanos tu negocio y lo que quieres mejorar. Contacta con Nuvora.",
-  alternates: { canonical: withBasePath("/contacto/") },
-};
+export const metadata: Metadata = pageMetadata(
+  "/contacto/",
+  "Cuéntanos tu proyecto",
+  "¿Necesitas una web nueva, renovar la actual o mantenerla al día? Cuéntanos tu negocio y lo que quieres mejorar. Contacta con Nuvora.",
+);
 
 export default function ContactPage() {
   return (

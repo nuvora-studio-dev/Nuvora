@@ -3,9 +3,12 @@ import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/content/site";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Aviso legal", alternates: { canonical: withBasePath("/aviso-legal/") }, robots: { index: false, follow: false } };
+export const metadata: Metadata = {
+  ...pageMetadata("/aviso-legal/", "Aviso legal", "Información sobre el titular y el contenido de la web de Nuvora."),
+  robots: { index: false, follow: false },
+};
 
 export default function LegalPage() {
   return <>

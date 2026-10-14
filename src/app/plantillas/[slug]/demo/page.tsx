@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTemplate, templateList } from "@/templates/registry";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 import dynamic from "next/dynamic";
 const AtriaDemo = dynamic(() => import("@/templates/atria/demo").then(module => module.AtriaDemo));
 const PulseDemo = dynamic(() => import("@/templates/pulse/demo").then(module => module.PulseDemo));
@@ -15,7 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const template = getTemplate(slug);
   if (!template) return {};
-  return { title: `${template.name} — demo`, description: `Demo de ${template.name}, dirección visual de Nuvora.`, robots: { index: false, follow: false, googleBot: { index: false, follow: false } }, alternates: { canonical: withBasePath(`/plantillas/${slug}/`) } };
+  return {
+    ...pageMetadata(`/plantillas/${slug}/`, `${template.name} — demo`, `Demo de ${template.name}, dirección visual de Nuvora.`, template.cover, template.coverAlt),
+    robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
+  };
 }
 
 export default async function DemoPage({ params }: { params: Promise<{ slug: string }> }) {

@@ -3,9 +3,12 @@ import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/content/site";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Política de privacidad", alternates: { canonical: withBasePath("/privacidad/") }, robots: { index: false, follow: false } };
+export const metadata: Metadata = {
+  ...pageMetadata("/privacidad/", "Política de privacidad", "Información sobre los datos que compartes al consultar un proyecto con Nuvora."),
+  robots: { index: false, follow: false },
+};
 
 export default function PrivacyPage() {
   return <>

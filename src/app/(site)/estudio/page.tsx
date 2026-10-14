@@ -3,14 +3,13 @@ import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
 import { ContactCTA } from "@/components/layout/contact-cta";
 import { TextLink } from "@/components/ui/text-link";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "El estudio",
-  description:
-    "Conoce la forma de trabajar de Nuvora: diseño y desarrollo juntos, comunicación directa y atención al detalle desde la primera conversación.",
-  alternates: { canonical: withBasePath("/estudio/") },
-};
+export const metadata: Metadata = pageMetadata(
+  "/estudio/",
+  "El estudio",
+  "Conoce la forma de trabajar de Nuvora: diseño y desarrollo juntos, comunicación directa y atención al detalle desde la primera conversación.",
+);
 
 export default function StudioPage() {
   return (

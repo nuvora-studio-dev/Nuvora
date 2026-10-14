@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 import { TemplateImage as Image } from "@/components/templates/template-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const template = getTemplate(slug);
   if (!template) return {};
-  return { title: template.seoTitle, description: template.description, robots: { index: siteConfig.indexable, follow: siteConfig.indexable }, alternates: { canonical: withBasePath(`/plantillas/${slug}/`) }, openGraph: { title: template.seoTitle, description: template.description, images: [withBasePath(template.cover)] } };
+  return pageMetadata(`/plantillas/${slug}/`, template.seoTitle, template.description, template.cover, template.coverAlt);
 }
 
 export default async function TemplatePage({ params }: { params: Promise<{ slug: string }> }) {

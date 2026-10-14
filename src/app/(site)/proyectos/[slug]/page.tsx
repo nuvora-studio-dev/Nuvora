@@ -6,6 +6,7 @@ import { Container } from "@/components/layout/container";
 import { ContactCTA } from "@/components/layout/contact-cta";
 import { TextLink } from "@/components/ui/text-link";
 import { projects, getProject } from "@/content/projects";
+import { pageMetadata } from "@/lib/metadata";
 import { withBasePath } from "@/lib/base-path";
 
 export function generateStaticParams() {
@@ -20,16 +21,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return {
-    title: `${project.name} — caso conceptual`,
-    description: project.intro,
-    alternates: { canonical: withBasePath(`/proyectos/${slug}/`) },
-    openGraph: {
-      title: `${project.name} — Concepto de Nuvora`,
-      description: project.intro,
-      images: [withBasePath(`/templates/previews/${slug}.webp`)],
-    },
-  };
+  return pageMetadata(
+    `/proyectos/${slug}/`, `${project.name} — caso conceptual`, project.intro,
+    `/templates/previews/${slug}.webp`,
+    `Captura de la interfaz conceptual de ${project.name}`,
+  );
 }
 
 export default async function ProjectPage({

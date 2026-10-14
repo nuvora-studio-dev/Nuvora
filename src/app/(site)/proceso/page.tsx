@@ -3,14 +3,13 @@ import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
 import { ContactCTA } from "@/components/layout/contact-cta";
 import { processSteps } from "@/content/process";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Cómo trabajamos",
-  description:
-    "Del primer contacto a la publicación: conoce el proceso de Nuvora, qué revisamos y cómo participas en las decisiones de tu proyecto web.",
-  alternates: { canonical: withBasePath("/proceso/") },
-};
+export const metadata: Metadata = pageMetadata(
+  "/proceso/",
+  "Cómo trabajamos",
+  "Del primer contacto a la publicación: conoce el proceso de Nuvora, qué revisamos y cómo participas en las decisiones de tu proyecto web.",
+);
 
 export default function ProcessPage() {
   return (

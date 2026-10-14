@@ -6,7 +6,7 @@ import { Container } from "@/components/layout/container";
 import { ContactCTA } from "@/components/layout/contact-cta";
 import { TextLink } from "@/components/ui/text-link";
 import { services, getService } from "@/content/services";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return services.map(({ slug }) => ({ slug }));
@@ -20,15 +20,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
-  return {
-    title: service.name,
-    description: service.description,
-    alternates: { canonical: withBasePath(`/servicios/${slug}/`) },
-    openGraph: {
-      title: `${service.name} | Nuvora`,
-      description: service.description,
-    },
-  };
+  return pageMetadata(`/servicios/${slug}/`, service.name, service.description);
 }
 
 export default async function ServicePage({

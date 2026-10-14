@@ -5,14 +5,13 @@ import { ContactCTA } from "@/components/layout/contact-cta";
 import { ProjectPreview } from "@/components/projects/project-preview";
 import { TextLink } from "@/components/ui/text-link";
 import { projects } from "@/content/projects";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Proyectos y conceptos web",
-  description:
-    "Explora Atria, Pulse y Aura: conceptos de Nuvora para restauración, fitness y bienestar, con casos explicados y demos navegables.",
-  alternates: { canonical: withBasePath("/proyectos/") },
-};
+export const metadata: Metadata = pageMetadata(
+  "/proyectos/",
+  "Proyectos y conceptos web",
+  "Explora Atria, Pulse y Aura: conceptos de Nuvora para restauración, fitness y bienestar, con casos explicados y demos navegables.",
+);
 
 export default function ProjectsPage() {
   return (

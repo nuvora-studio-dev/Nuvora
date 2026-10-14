@@ -1,6 +1,7 @@
 const siteUrl = new URL(
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://nuvora-studio.pages.dev",
 );
+const hostname = siteUrl.hostname.replace(/\.$/, "");
 const indexable =
   process.env.NODE_ENV !== "development" &&
   process.env.NEXT_PUBLIC_SITE_INDEXABLE !== "false" &&
@@ -8,13 +9,18 @@ const indexable =
 if (
   !["https:", "http:"].includes(siteUrl.protocol) ||
   siteUrl.username ||
-  siteUrl.password
+  siteUrl.password ||
+  siteUrl.pathname !== "/" || siteUrl.search || siteUrl.hash
 )
   throw new Error(
-    "NEXT_PUBLIC_SITE_URL must be an http(s) URL without credentials.",
+    "NEXT_PUBLIC_SITE_URL must be an http(s) origin without credentials, path, query or fragment.",
   );
-if (indexable && ["localhost", "127.0.0.1", "[::1]"].includes(siteUrl.hostname))
-  throw new Error("An indexable build requires a public NEXT_PUBLIC_SITE_URL.");
+if (process.env.NODE_ENV === "production" && (
+  siteUrl.protocol !== "https:" ||
+  ["localhost", "[::1]", "0.0.0.0"].includes(hostname) ||
+  hostname.endsWith(".localhost") || hostname.startsWith("127.")
+))
+  throw new Error("A production build requires a public HTTPS NEXT_PUBLIC_SITE_URL, including previews.");
 
 export const siteConfig = {
   name: "Nuvora",
@@ -32,3 +38,7 @@ export const siteConfig = {
 } as const;
 
 export type NavItem = (typeof siteConfig.nav)[number];
+
+export function absoluteUrl(path: string) {
+  return `${siteConfig.url}${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
+}

@@ -7,15 +7,31 @@ import { TextLink } from "@/components/ui/text-link";
 import { Arrow } from "@/components/ui/arrow";
 import { services } from "@/content/services";
 import { projects } from "@/content/projects";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
+import { absoluteUrl, siteConfig } from "@/content/site";
 
-export const metadata: Metadata = {
-  alternates: { canonical: withBasePath("/") },
-};
+export const metadata: Metadata = pageMetadata(
+  "/", "Nuvora — Diseño y desarrollo web", siteConfig.description,
+);
 
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization", "@id": `${absoluteUrl("/")}#organization`,
+            name: siteConfig.name, url: absoluteUrl("/"), email: siteConfig.email,
+            logo: absoluteUrl("/brand/lockup-light.png"),
+          },
+          {
+            "@type": "WebSite", "@id": `${absoluteUrl("/")}#website`,
+            name: siteConfig.name, url: absoluteUrl("/"), inLanguage: "es",
+            publisher: { "@id": `${absoluteUrl("/")}#organization` },
+          },
+        ],
+      }).replace(/</g, "\\u003c") }} />
       <section className="home-hero">
         <Container>
           <div className="hero-topline">

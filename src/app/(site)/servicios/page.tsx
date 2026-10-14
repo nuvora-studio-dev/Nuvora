@@ -5,14 +5,13 @@ import { Container } from "@/components/layout/container";
 import { ContactCTA } from "@/components/layout/contact-cta";
 import { TextLink } from "@/components/ui/text-link";
 import { services } from "@/content/services";
-import { withBasePath } from "@/lib/base-path";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Servicios de diseño, rediseño y mantenimiento web",
-  description:
-    "Una web nueva, una renovación de tu web actual o apoyo para mantenerla al día. Conoce cómo trabaja Nuvora y qué puede incluir cada servicio.",
-  alternates: { canonical: withBasePath("/servicios/") },
-};
+export const metadata: Metadata = pageMetadata(
+  "/servicios/",
+  "Servicios de diseño, rediseño y mantenimiento web",
+  "Una web nueva, una renovación de tu web actual o apoyo para mantenerla al día. Conoce cómo trabaja Nuvora y qué puede incluir cada servicio.",
+);
 
 export default function ServicesPage() {
   return (

@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/content/site";
-import { withBasePath } from "@/lib/base-path";
+import { absoluteUrl, siteConfig } from "@/content/site";
 
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  return siteConfig.indexable
-    ? { rules: { userAgent: "*", allow: "/" }, sitemap: new URL(withBasePath("/sitemap.xml"), siteConfig.url).toString() }
-    : { rules: { userAgent: "*", disallow: "/" } };
+  // Crawlers must access previews and demos to read their noindex metadata.
+  return {
+    rules: { userAgent: "*", allow: "/" },
+    sitemap: siteConfig.indexable ? absoluteUrl("/sitemap.xml") : undefined,
+  };
 }
