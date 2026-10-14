@@ -1,0 +1,353 @@
+{
+  "pages": [
+    {
+      "route": "/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/servicios/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/servicios/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/servicios/diseno-desarrollo-web/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/servicios/diseno-desarrollo-web/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/servicios/rediseno-web/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/servicios/rediseno-web/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/servicios/mantenimiento-web/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/servicios/mantenimiento-web/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proyectos/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/proyectos/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proyectos/atria/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/proyectos/atria/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proyectos/pulse/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/proyectos/pulse/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proyectos/aura/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/proyectos/aura/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/estudio/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/estudio/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proceso/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/proceso/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/contacto/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/contacto/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/plantillas/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/atria/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/plantillas/atria/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/pulse/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/plantillas/pulse/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/aura/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/plantillas/aura/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/aviso-legal/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/aviso-legal/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/privacidad/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/privacidad/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/cookies/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/cookies/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/atria/demo/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/plantillas/atria/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/pulse/demo/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/plantillas/pulse/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/aura/demo/",
+      "width": 390,
+      "brokenImages": [],
+      "canonical": "https://nuvora-studio.pages.dev/plantillas/aura/",
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/servicios/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/servicios/diseno-desarrollo-web/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/servicios/rediseno-web/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/servicios/mantenimiento-web/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proyectos/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proyectos/atria/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proyectos/pulse/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proyectos/aura/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/estudio/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/proceso/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/contacto/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/atria/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/pulse/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/aura/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/aviso-legal/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/privacidad/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/cookies/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/atria/demo/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/pulse/demo/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    },
+    {
+      "route": "/plantillas/aura/demo/",
+      "width": 1440,
+      "brokenImages": [],
+      "h1": 1,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "menu": {
+    "expand": true,
+    "escapeClose": true,
+    "navigation": true
+  },
+  "contact": {
+    "servicePreselection": "rediseno-web",
+    "invalidEmailRejected": true,
+    "focus": "email",
+    "valuesRetained": true,
+    "sent": false
+  },
+  "personalizer": {
+    "iframeUpdate": true,
+    "businessQuery": "Nuvora QA",
+    "context": true,
+    "service": "concepto-web"
+  }
+}
