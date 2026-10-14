@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { siteConfig } from "@/content/site";
 import "@/styles/tokens.css";
 import "@/styles/globals.css";
-import "@/styles/templates.css";
+
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: "400", display: "swap", variable: "--font-plex-mono", preload: false });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(siteConfig.url),
   title: { default: "Nuvora — Diseño y desarrollo web", template: "%s | Nuvora" },
   description: siteConfig.description,
   openGraph: {
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     title: "Nuvora — Diseño y desarrollo web",
     description: siteConfig.description,
   },
-  robots: { index: true, follow: true },
+  robots: { index: siteConfig.indexable, follow: siteConfig.indexable },
 };
 
 export const viewport: Viewport = {
@@ -33,7 +34,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="es" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="es" className={`${inter.variable} ${mono.variable}`}>
       <body>
         <a className="skip-link" href="#contenido">Saltar al contenido</a>
         {children}

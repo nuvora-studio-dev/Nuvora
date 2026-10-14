@@ -26,7 +26,7 @@ export function DemoExperience({ slug, name, headline, children }: { slug: Templ
   const theme = palettes[slug][config.palette];
   const accent = config.accent || theme.accent;
   const style = { "--demo-bg": theme.background, "--demo-surface": theme.surface, "--demo-text": theme.text, "--demo-ink": theme.ink, "--demo-accent": accent, "--demo-readable-accent": readableAccent(accent, theme.background, theme.text), "--demo-accent-ink": contrastInk(accent) } as CSSProperties;
-  return <DemoContext.Provider value={config}><main id="contenido" className={`demo-site demo-${slug}`} style={style}>{children}<aside className="demo-nuvora-cta"><p>Demo conceptual creada por Nuvora · {name}</p><Link href={`/contact?template=${slug}&${demoQuery(config)}`}>Quiero una web como esta ↗</Link></aside></main></DemoContext.Provider>;
+  return <DemoContext.Provider value={config}><main id="contenido" className={`demo-site demo-${slug}`} style={style}>{children}<aside className="demo-nuvora-cta"><p>Demo conceptual creada por Nuvora · {name}</p><Link href={`/contacto?template=${slug}&${demoQuery(config)}`}>Quiero una web como esta ↗</Link></aside></main></DemoContext.Provider>;
 }
 
 export function useDemoConfig() {

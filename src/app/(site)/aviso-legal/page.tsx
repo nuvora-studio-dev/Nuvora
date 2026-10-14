@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro } from "@/components/layout/page-intro";
 import { Container } from "@/components/layout/container";
+import { siteConfig } from "@/content/site";
+import { withBasePath } from "@/lib/base-path";
 
-export const metadata: Metadata = { title: "Aviso legal", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Aviso legal", alternates: { canonical: withBasePath("/aviso-legal/") }, robots: { index: false, follow: false } };
 
 export default function LegalPage() {
   return <>
@@ -16,7 +18,7 @@ export default function LegalPage() {
         <li>NIF o CIF: pendiente de confirmar.</li>
         <li>Domicilio profesional: pendiente de confirmar.</li>
         <li>Datos registrales, si corresponden: pendientes de confirmar.</li>
-        <li>Email: <a href="mailto:nuvora.studio@outlook.com">nuvora.studio@outlook.com</a>.</li>
+        <li>Email: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.</li>
       </ul>
       <h2>Objeto de la web</h2>
       <p>Esta web presenta los servicios de diseño, desarrollo, optimización y mantenimiento de Nuvora y permite preparar consultas por email. El envío de una consulta no formaliza una contratación.</p>

@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const template = getTemplate(slug);
   if (!template) return {};
-  return { title: `${template.name} — demo`, description: `Demo de ${template.name}, dirección visual de Nuvora.`, robots: { index: false, follow: false, googleBot: { index: false, follow: false } }, alternates: { canonical: withBasePath(`/plantillas/${slug}`) } };
+  return { title: `${template.name} — demo`, description: `Demo de ${template.name}, dirección visual de Nuvora.`, robots: { index: false, follow: false, googleBot: { index: false, follow: false } }, alternates: { canonical: withBasePath(`/plantillas/${slug}/`) } };
 }
 
 export default async function DemoPage({ params }: { params: Promise<{ slug: string }> }) {

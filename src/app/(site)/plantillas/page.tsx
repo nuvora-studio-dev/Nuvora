@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Container } from "@/components/layout/container";
 import { TemplateCatalog } from "@/components/templates/catalog";
 import { withBasePath } from "@/lib/base-path";
+import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Demos y direcciones visuales",
   description: "Explora diseños base de Nuvora para gastronomía, fitness y bienestar. Cada dirección visual se adapta a tu negocio.",
-  alternates: { canonical: withBasePath("/plantillas") },
-  robots: { index: true, follow: true },
+  alternates: { canonical: withBasePath("/plantillas/") },
+  robots: { index: siteConfig.indexable, follow: siteConfig.indexable },
 };
 
 export default function TemplatesPage() {

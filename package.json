@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:templates": "node scripts/check-templates.mjs"
+    "test:templates": "node scripts/check-templates.mjs",
+    "test:contact": "node scripts/check-contact.mjs",
+    "test:site": "node scripts/check-site.mjs"
   },
   "dependencies": {
     "geist": "^1.7.2",

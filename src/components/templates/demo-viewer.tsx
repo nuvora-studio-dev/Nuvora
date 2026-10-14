@@ -51,13 +51,13 @@ export function DemoViewer({ slug, name }: { slug: TemplateSlug; name: string })
         <label>Ubicación<input value={config.location} maxLength={100} placeholder="Ciudad o dirección" onChange={event => update("location", event.target.value)} /></label>
         <label className="customizer-checkbox"><input type="checkbox" checked={config.showDetails} onChange={event => update("showDetails", event.target.checked)} />Mostrar {slug === "atria" ? "galería" : "equipo"}</label>
       </div>
-      <div className="customizer-actions"><button type="button" onClick={() => setConfig(readDemoConfig(new URLSearchParams(), defaults))}>Restablecer</button><button type="button" onClick={share}>Copiar enlace</button><Link className="button" href={`/contact?template=${slug}&${query}`}>Usar esta configuración como punto de partida</Link></div>
+      <div className="customizer-actions"><button type="button" onClick={() => setConfig(readDemoConfig(new URLSearchParams(), defaults))}>Restablecer</button><button type="button" onClick={share}>Copiar enlace</button><Link className="button" href={`/contacto?template=${slug}&${query}`}>Usar esta configuración como punto de partida</Link></div>
       <p className="viewer-note">El enlace incluye los datos introducidos. El contraste del texto se ajusta al acento elegido. Fotografías y contenido de ejemplo se adaptan durante el proyecto.</p>
       {notice && <p role="status">{notice}</p>}
     </details>
     <div className="viewer-toolbar"><div role="group" aria-label="Ancho de vista previa">{(Object.keys(devices) as Array<keyof typeof devices>).map(item => <button key={item} type="button" aria-pressed={device === item} onClick={() => setDevice(item)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">{item === "Desktop" ? <><rect x="3" y="4" width="18" height="13" rx="2" /><path d="M8 21h8M12 17v4" /></> : <rect x={item === "Tablet" ? 5 : 7} y="2" width={item === "Tablet" ? 14 : 10} height="20" rx="2" />}</svg>{item}<span className="device-size">{devices[item]}</span></button>)}</div><Link href={`${path}?${query}`} target="_blank" rel="noopener noreferrer">Abrir demo completa ↗</Link></div>
     <div className="viewer-stage"><div ref={viewport} className="viewer-frame" style={{ width: devices[device], maxWidth: "100%" }}><iframe style={{ width: devices[device], height: size.height / scale, transform: `scale(${scale})`, transformOrigin: "top left" }} ref={frame} src={withBasePath(path)} onLoad={sendConfig} title={`Vista previa de ${name} en ${device.toLowerCase()}`} loading="lazy" /></div></div>
     <p className="viewer-note">Vista interactiva. Desplázate dentro de la demo o ábrela en una pestaña para verla sin marco.</p>
-    <div className="viewer-contact"><p>¿Te imaginas una web así para tu negocio?</p><Link className="button" href={`/contact?template=${slug}&${query}`}>Quiero una web como esta</Link></div>
+    <div className="viewer-contact"><p>¿Te imaginas una web así para tu negocio?</p><Link className="button" href={`/contacto?template=${slug}&${query}`}>Quiero una web como esta</Link></div>
   </div>;
 }

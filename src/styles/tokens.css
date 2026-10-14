@@ -9,11 +9,13 @@
   --color-success: #3ddc97;
   --color-warning: #f4c95d;
   --color-danger: #ff6b6b;
-  --color-border: rgb(255 255 255 / 0.1);
-  --color-border-strong: rgb(255 255 255 / 0.18);
-  --font-display: var(--font-geist-sans), "Helvetica Neue", Arial, sans-serif;
-  --font-body: var(--font-geist-sans), Inter, "Segoe UI", Arial, sans-serif;
-  --font-mono: var(--font-geist-mono), "IBM Plex Mono", Consolas, monospace;
+  --color-border: rgb(255 255 255 / 0.08);
+  --color-border-strong: rgb(255 255 255 / 0.16);
+  --color-control-border: color-mix(in srgb, var(--color-muted) 60%, var(--color-surface));
+  /* shortcut: Inter is the official fallback until licensed Söhne web files are supplied. */
+  --font-display: var(--font-inter), "Segoe UI", Arial, sans-serif;
+  --font-body: var(--font-inter), "Segoe UI", Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), Consolas, monospace;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;

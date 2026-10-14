@@ -8,22 +8,23 @@ export function Footer() {
       <div className="container footer-grid">
         <div>
           <BrandMark />
-          <p className="footer-statement">Diseño y desarrollo web para negocios y marcas que quieren hacer las cosas bien.</p>
+          <p className="footer-statement">Diseño con intención. Desarrollo con criterio. Atención a cada detalle.</p>
         </div>
         <nav aria-label="Navegación del pie">
-          <strong>Navegación</strong>
-          {siteConfig.nav.map((item) => <Link key={item.href} href={item.href}>{item.href === "/about" ? "Nuvora" : item.label}</Link>)}
+          <strong>Explora Nuvora</strong>
+          {siteConfig.nav.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+          <Link href="/plantillas">Demos interactivas</Link>
         </nav>
         <nav aria-label="Contacto">
           <strong>Contacto</strong>
-          <a href="mailto:nuvora.studio@outlook.com">nuvora.studio@outlook.com</a>
+          <Link href="/contacto">Cuéntanos tu proyecto</Link>
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
         </nav>
-        <nav className="footer-legal" aria-label="Información legal">
+        <div className="footer-bottom"><p className="footer-meta">© {new Date().getFullYear()} Nuvora</p><nav className="footer-legal" aria-label="Información legal">
           <Link href="/privacidad">Política de privacidad</Link>
           <Link href="/aviso-legal">Aviso legal</Link>
           <Link href="/cookies">Cookies</Link>
-        </nav>
-        <p className="footer-meta">© {new Date().getFullYear()} Nuvora. Todos los derechos reservados.</p>
+        </nav></div>
       </div>
     </footer>
   );
